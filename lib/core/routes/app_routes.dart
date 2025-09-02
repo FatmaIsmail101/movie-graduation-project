@@ -3,6 +3,7 @@ import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/modules/authuntication/login_view.dart';
 
 import '../../modules/authuntication/register_page.dart';
+import '../../modules/onboarding/onboarding_screen.dart';
 import '../../modules/splash/splash_screen.dart';
 import '../../modules/update_profile/update_profile_view.dart';
 
@@ -16,7 +17,7 @@ abstract class AppRoutes {
         );
       case PageRouteName.onboarding:
         return MaterialPageRoute(
-          builder: (_) => SplashScreen(),
+          builder: (_) => OnboardingScreen(),
           settings: settings,
         );
       case PageRouteName.loginView:

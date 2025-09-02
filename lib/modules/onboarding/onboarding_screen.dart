@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/routes/page_route_name.dart';
 
 import 'onboarding_data.dart';
 
@@ -76,49 +78,47 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               return Container(
                 decoration: BoxDecoration(
                   color: Colors.black.withOpacity(0.8),
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(30),
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(30.r),
                   ),
                   boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10)],
                 ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 25,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h)),
                 child: ListView(
                   controller: scrollController,
                   children: [
                     Text(
                       page.title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 24.sp,
                         fontWeight: FontWeight.w700,
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     Text(
                       page.description ?? "",
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w400,
                         color: Colors.white70,
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20.h),
                     SizedBox(
-                      width: double.infinity,
+                      width: double.infinity.w,
                       child: OutlinedButton(
                         style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: Colors.black, width: 2),
+                          side: BorderSide(color: Colors.black, width: 2.w),
                           backgroundColor: const Color(0xFFF6BD00),
-                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          padding: EdgeInsets.symmetric(vertical: 14.h),
                         ),
                         onPressed: () {
                           if (currentPage == filteredPages.length - 1) {
-                            Navigator.pushReplacementNamed(context, "/home");
+                            Navigator.pushReplacementNamed(
+                                context, PageRouteName.loginView);
                           } else {
                             controller.nextPage(
                               duration: const Duration(milliseconds: 300),
@@ -130,26 +130,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           currentPage == filteredPages.length - 1
                               ? "Finish"
                               : "Next",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.black,
-                            fontSize: 20,
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    SizedBox(height: 10.h),
                     if (currentPage > 0)
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton(
                           style: OutlinedButton.styleFrom(
-                            side: const BorderSide(
+                            side: BorderSide(
                               color: Color(0xFFF6BD00),
-                              width: 2,
+                              width: 2.w,
                             ),
                             backgroundColor: Colors.black,
-                            padding: const EdgeInsets.symmetric(vertical: 14),
+                            padding: EdgeInsets.symmetric(vertical: 14.h),
                           ),
                           onPressed: () {
                             controller.previousPage(
@@ -157,11 +157,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               curve: Curves.ease,
                             );
                           },
-                          child: const Text(
+                          child: Text(
                             "Back",
                             style: TextStyle(
                               color: Color(0xFFF6BD00),
-                              fontSize: 20,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

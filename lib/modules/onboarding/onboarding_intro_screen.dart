@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'onboarding_data.dart';
 import 'onboarding_screen.dart';
@@ -35,7 +36,7 @@ class OnboardingIntroScreen extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 360,
+              height: 360.h,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -50,36 +51,36 @@ class OnboardingIntroScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 40,
-            left: 20,
-            right: 20,
+            bottom: 40.h,
+            left: 20.w,
+            right: 20.w,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   firstPage.title,
-                  style: const TextStyle(
-                    fontSize: 36,
+                  style: TextStyle(
+                    fontSize: 36.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   firstPage.description ?? "",
-                  style: const TextStyle(
-                    fontSize: 20,
+                  style: TextStyle(
+                    fontSize: 20.sp,
                     color: Colors.white70,
                     fontWeight: FontWeight.w400,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFF6BD00),
-                    minimumSize: const Size(double.infinity, 50),
+                    minimumSize: Size(double.infinity, 50.h),
                   ),
                   onPressed: () {
                     Navigator.pushReplacement(
@@ -93,7 +94,7 @@ class OnboardingIntroScreen extends StatelessWidget {
                     "Explore Now",
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 20,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

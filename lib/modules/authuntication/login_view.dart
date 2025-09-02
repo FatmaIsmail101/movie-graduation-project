@@ -74,9 +74,14 @@ class LoginView extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
-                  child: Text(
-                    "Forget Password ?",
-                    style: TextStyle(color: Color(0xffF6BD00)),
+                  child: Bounceable(
+                    onTap: () {
+                      Navigator.pushNamed(context, PageRouteName.registerView);
+                    },
+                    child: Text(
+                      "Forget Password ?",
+                      style: TextStyle(color: Color(0xffF6BD00)),
+                    ),
                   ),
                 ),
                 CustomButton(

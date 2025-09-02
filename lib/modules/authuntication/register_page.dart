@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/constants/assets.dart';
 
@@ -16,10 +17,10 @@ class _RegisterPageState extends State<RegisterPage> {
   int selectedLang = 0; // 0: English, 1: Arabic
 
   final List<Map<String, String>> avatars = [
-    {'asset': AppAssets.coolMan, 'label': 'Avatar'},
-    {'asset': AppAssets.boyAvatar, 'label': 'Avatar'},
-    {'asset': AppAssets.matureMan, 'label': 'Avatar'},
-    {'asset': AppAssets.women, 'label': 'Avatar'},
+    {'asset': AppAssets.image9, 'label': 'Avatar'},
+    {'asset': AppAssets.image7, 'label': 'Avatar'},
+    {'asset': AppAssets.image2, 'label': 'Avatar'},
+    {'asset': AppAssets.image10, 'label': 'Avatar'},
   ];
 
   @override
@@ -34,23 +35,23 @@ class _RegisterPageState extends State<RegisterPage> {
           icon: const Icon(Icons.arrow_back, color: Color(0xFFFFBB3B)),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
+        title: Text(
           "Register",
           style: TextStyle(
             color: Color(0xFFFFBB3B),
-            fontSize: 16,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w400,
           ),
         ),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 14),
+        padding: EdgeInsets.symmetric(horizontal: 14.h),
         child: Column(
           children: [
-            const SizedBox(height: 24),
+            SizedBox(height: 24.h),
             // --- Avatar picker ---
             SizedBox(
-              height: 170,
+              height: 170.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: avatars.length,
@@ -63,69 +64,71 @@ class _RegisterPageState extends State<RegisterPage> {
                       });
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: isSelected
-                                  ? Border.all(
-                                      color: Color(0xFFFFBB3B),
-                                      width: 4,
-                                    )
-                                  : null,
-                              boxShadow: isSelected
-                                  ? [
-                                      BoxShadow(
-                                        color: Color(
-                                          0xFFFFBB3B,
-                                        ).withOpacity(0.25),
-                                        blurRadius: 16,
-                                        spreadRadius: 2,
-                                      ),
-                                    ]
-                                  : [],
-                            ),
-                            child: CircleAvatar(
-                              radius: isSelected ? 55 : 40,
-                              backgroundColor: Colors.transparent,
-                              backgroundImage: AssetImage(
-                                avatars[index]['asset']!,
+                      padding: EdgeInsets.symmetric(horizontal: 12.r),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: isSelected
+                                    ? Border.all(
+                                  color: Color(0xFFFFBB3B),
+                                  width: 4.w,
+                                )
+                                    : null,
+                                boxShadow: isSelected
+                                    ? [
+                                  BoxShadow(
+                                    color: Color(
+                                      0xFFFFBB3B,
+                                    ).withOpacity(0.25),
+                                    blurRadius: 16,
+                                    spreadRadius: 2,
+                                  ),
+                                ]
+                                    : [],
+                              ),
+                              child: CircleAvatar(
+                                radius: isSelected ? 55.r : 40.r,
+                                backgroundColor: Colors.transparent,
+                                backgroundImage: AssetImage(
+                                  avatars[index]['asset']!,
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 12),
-                          if (isSelected)
-                            const Text(
-                              "Avatar",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
+                            SizedBox(height: 12.h),
+                            if (isSelected)
+                              Text(
+                                "Avatar",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
                 },
               ),
             ),
-            const SizedBox(height: 14),
+            SizedBox(height: 14.h),
             // ------ INPUT FIELDS --------
             _customField(
               iconAsset: AppAssets.identificationIcn,
               hint: "Name",
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             _customField(
               iconAsset: AppAssets.mailIcn,
               hint: "Email",
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             _customField(
               iconAsset: AppAssets.passwordIcn,
               hint: "Password",
@@ -133,9 +136,9 @@ class _RegisterPageState extends State<RegisterPage> {
               isObscure: !showPassword,
               onSuffixTap: () => setState(() => showPassword = !showPassword),
               suffixAsset: AppAssets.eyeOff,
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             _customField(
               iconAsset: AppAssets.passwordIcn,
               hint: "Confirm Password",
@@ -144,16 +147,16 @@ class _RegisterPageState extends State<RegisterPage> {
               onSuffixTap: () =>
                   setState(() => showConfirmPassword = !showConfirmPassword),
               suffixAsset: AppAssets.eyeOff,
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             _customField(
               iconAsset: AppAssets.phoneIcn,
               hint: "Phone Number",
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
             // -------- زر Create Account --------
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -163,28 +166,28 @@ class _RegisterPageState extends State<RegisterPage> {
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(26),
+                    borderRadius: BorderRadius.circular(26.r),
                   ),
                 ),
-                child: const Text(
+                child: Text(
                   'Create Account',
                   style: TextStyle(
                     color: Color(0xFF121312),
                     fontWeight: FontWeight.w400,
-                    fontSize: 20,
+                    fontSize: 20.sp,
                   ),
                 ),
               ),
             ),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   "Already Have Account ? ",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
@@ -192,21 +195,21 @@ class _RegisterPageState extends State<RegisterPage> {
                   onTap: () {
                     // Go to Login page
                   },
-                  child: const Text(
+                  child: Text(
                     "Login",
                     style: TextStyle(
                       color: Color(0xFFF6BD00),
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 26),
+            SizedBox(height: 26.h),
             // -------- لغة السويتشر --------
             _languageSwitcherAnimated(),
-            const SizedBox(height: 18),
+            SizedBox(height: 18.h),
           ],
         ),
       ),
@@ -216,18 +219,18 @@ class _RegisterPageState extends State<RegisterPage> {
   // ---------- لغة السويتشر ----------
   Widget _languageSwitcherAnimated() {
     // أبعاد صغيرة وثابتة
-    const double totalWidth = 108; // قللت العرض الكلي عشان يلم الأعلام
-    const double iconRadius = 21;
-    const double borderWidth = 2;
+    double totalWidth = 108.w; // قللت العرض الكلي عشان يلم الأعلام
+    double iconRadius = 21.r;
+    double borderWidth = 2.w;
     const double yellowCircleSize = 44;
 
     return Container(
       width: totalWidth,
-      height: yellowCircleSize + 10,
+      height: yellowCircleSize + 10.h,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.02),
         border: Border.all(color: Color(0xFFF6BD00), width: borderWidth),
-        borderRadius: BorderRadius.circular(90),
+        borderRadius: BorderRadius.circular(90.r),
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -245,7 +248,7 @@ class _RegisterPageState extends State<RegisterPage> {
               height: yellowCircleSize,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Color(0xFFF6BD00), width: 3),
+                border: Border.all(color: Color(0xFFF6BD00), width: 3.w),
               ),
             ),
           ),
@@ -262,10 +265,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     radius: iconRadius,
                     child: ClipOval(
                       child: Image.asset(
-                        AppAssets.englishIcn,
+                        AppAssets.en,
                         fit: BoxFit.cover,
-                        width: iconRadius * 2,
-                        height: iconRadius * 2,
+                        width: iconRadius * 2.w,
+                        height: iconRadius * 2.w,
                       ),
                     ),
                   ),
@@ -280,10 +283,10 @@ class _RegisterPageState extends State<RegisterPage> {
                     radius: iconRadius,
                     child: ClipOval(
                       child: Image.asset(
-                        AppAssets.arabicIcn,
+                        AppAssets.ar,
                         fit: BoxFit.cover,
-                        width: iconRadius * 2,
-                        height: iconRadius * 2,
+                        width: iconRadius * 2.w,
+                        height: iconRadius * 2.h,
                       ),
                     ),
                   ),
@@ -308,14 +311,15 @@ class _RegisterPageState extends State<RegisterPage> {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFF282A28),
-        borderRadius: BorderRadius.circular(22),
+        borderRadius: BorderRadius.circular(22.r),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 18),
+      padding: EdgeInsets.symmetric(horizontal: 18.r),
       child: Row(
         children: [
           if (iconAsset != null)
-            Image.asset(iconAsset, width: 28, height: 28, color: Colors.white),
-          const SizedBox(width: 16),
+            Image.asset(
+                iconAsset, width: 28.w, height: 28.h, color: Colors.white),
+          SizedBox(width: 16.w),
           Expanded(
             child: TextField(
               obscureText: isObscure,
@@ -337,11 +341,11 @@ class _RegisterPageState extends State<RegisterPage> {
             GestureDetector(
               onTap: onSuffixTap,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                padding: EdgeInsets.symmetric(horizontal: 4.0.r),
                 child: Image.asset(
                   suffixAsset,
-                  width: 28,
-                  height: 28,
+                  width: 28.w,
+                  height: 28.h,
                   color: Colors.white,
                 ),
               ),

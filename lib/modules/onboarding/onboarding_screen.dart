@@ -83,7 +83,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10)],
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h)),
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
                 child: ListView(
                   controller: scrollController,
                   children: [

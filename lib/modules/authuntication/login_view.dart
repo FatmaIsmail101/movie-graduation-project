@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/constants/assets.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/color_pallete.dart';
@@ -29,8 +28,7 @@ class LoginView extends StatelessWidget {
             child: Column(
               spacing: 23.h,
               children: [
-                SvgPicture.asset(
-                  AppAssets.loginPIC, height: 100.h, width: 100.w,),
+                Image.asset(AppAssets.loginPIC),
                 CustomTextFormField(
                   textInputType: TextInputType.emailAddress,
                   textEditingController: _emailTextEditingController,

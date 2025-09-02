@@ -78,10 +78,13 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 CustomButton(
-                    onTap: () {
+                  text: "Login", size: 20,
+                  onTap: () {
+                    if (_globalKey.currentState!.validate()) {
                       Navigator.pushNamed(context, PageRouteName.homeView);
-                    },
-                    text: "Login", size: 20),
+                    }
+                  }
+                  ,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

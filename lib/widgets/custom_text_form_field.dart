@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  CustomTextFormField({
+  const CustomTextFormField({
     super.key,
     required this.prefixIcon,
     required this.text,
@@ -12,6 +12,8 @@ class CustomTextFormField extends StatefulWidget {
     this.textEditingController,
     this.onChanged,
     this.onFieldSubmitted,
+    required this.textInputType,
+
   });
 
   final Widget prefixIcon;
@@ -22,7 +24,7 @@ class CustomTextFormField extends StatefulWidget {
   final void Function(String)? onChanged;
   final TextEditingController? textEditingController;
   final void Function(String)? onFieldSubmitted;
-
+  final TextInputType textInputType;
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
@@ -33,26 +35,33 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: widget.textInputType,
+      style: TextStyle(color: Colors.white),
       onChanged: widget.onChanged,
       controller: widget.textEditingController,
       onFieldSubmitted: widget.onFieldSubmitted,
       validator: widget.validator,
       obscureText: widget.isPassword ? obscureText : false,
       decoration: InputDecoration(
+        filled: true,
+        errorStyle: TextStyle(color: Colors.red,),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(color: Colors.black),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+
+        borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(color: Colors.black),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+
+        borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(color: Colors.black),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
+
+        borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
@@ -61,6 +70,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         ),
         fillColor: Color(0xff282A28),
         hintText: widget.text,
+
         hintStyle: TextStyle(
           color: Colors.white,
           fontSize: 16,

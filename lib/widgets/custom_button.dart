@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({super.key, required this.text, required this.size});
+  CustomButton({this.onTap, super.key, required this.text, required this.size});
 
   final String text;
   double size;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Bounceable(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         alignment: Alignment.center,
         width: double.infinity,

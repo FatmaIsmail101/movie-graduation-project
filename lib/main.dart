@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/routes/app_routes.dart';
+import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/modules/authuntication/login_view.dart';
 
 void main() {
@@ -20,7 +22,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
             title: 'Movie',
             debugShowCheckedModeBanner: false,
-            home: LoginView()
+          home: LoginView(),
+          initialRoute: PageRouteName.loginView,
+          onGenerateRoute: AppRoutes.onGenerateRoute,
         );
       },
 

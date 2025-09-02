@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/modules/authuntication/login_view.dart';
-import 'package:movies/modules/home_screen/home_view.dart';
+
+import '../../modules/update_profile/update_profile_view.dart';
 
 abstract class AppRoutes {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -11,9 +12,9 @@ abstract class AppRoutes {
           builder: (_) => LoginView(),
           settings: settings,
         );
-      case PageRouteName.homeView:
+      case PageRouteName.uptadeProfileView:
         return MaterialPageRoute(
-          builder: (_) => HomeView(),
+          builder: (_) => UpdateProfileView(),
           settings: settings,
         );
       default:

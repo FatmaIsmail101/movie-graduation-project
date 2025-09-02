@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/constants/assets.dart';
 import 'package:movies/core/routes/page_route_name.dart';
+import 'package:movies/core/theme/color_pallete.dart';
 import 'package:movies/widgets/custom_button.dart';
 
 import '../../widgets/custom_text_form_field.dart';
@@ -18,8 +19,8 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      backgroundColor: Color(0xff282A28),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -28,7 +29,7 @@ class LoginView extends StatelessWidget {
             child: Column(
               spacing: 23,
               children: [
-                SvgPicture.asset(AppAssets.loginPIC),
+                SvgPicture.asset(AppAssets.loginPIC, height: 100, width: 100,),
                 CustomTextFormField(
                   textInputType: TextInputType.emailAddress,
                   textEditingController: _emailTextEditingController,
@@ -78,10 +79,11 @@ class LoginView extends StatelessWidget {
                   ),
                 ),
                 CustomButton(
-                  text: "Login", size: 20,
+                  text: "Login", color: ColorPallete.primaryColor,
                   onTap: () {
                     if (_globalKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, PageRouteName.homeView);
+                      Navigator.pushNamed(
+                          context, PageRouteName.uptadeProfileView);
                     }
                   }
                   ,),
@@ -128,7 +130,8 @@ class LoginView extends StatelessWidget {
                   ],
                 ),
                 //todo:SVG
-                CustomButton(text: "Login With Google", size: 16,
+                CustomButton(text:
+                "Login With Google", color: ColorPallete.primaryColor,
 
                 ),
                 Container(

@@ -22,14 +22,15 @@ class LoginView extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16).r,
         child: SingleChildScrollView(
           child: Form(
             key: _globalKey,
             child: Column(
-              spacing: 23,
+              spacing: 23.h,
               children: [
-                SvgPicture.asset(AppAssets.loginPIC, height: 100, width: 100,),
+                SvgPicture.asset(
+                  AppAssets.loginPIC, height: 100.h, width: 100.w,),
                 CustomTextFormField(
                   textInputType: TextInputType.emailAddress,
                   textEditingController: _emailTextEditingController,
@@ -94,7 +95,7 @@ class LoginView extends StatelessWidget {
                       "Don’t Have Account ?  ",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -102,7 +103,7 @@ class LoginView extends StatelessWidget {
                       "Create One",
                       style: TextStyle(
                         color: Color(0xffF6BD00),
-                        fontSize: 14,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -113,18 +114,18 @@ class LoginView extends StatelessWidget {
                     Expanded(
                       child: Divider(
                         color: Color(0xffF6BD00),
-                        endIndent: 20,
-                        indent: 20,
-                        thickness: 2,
+                        endIndent: 20.w,
+                        indent: 20.w,
+                        thickness: 2.h,
                       ),
                     ),
                     Text("Or", style: TextStyle(color: Color(0xffF6BD00))),
                     Expanded(
                       child: Divider(
-                        color: Color(0xffF6BD00),
-                        endIndent: 20,
-                        indent: 20,
-                        thickness: 2,
+                        color: ColorPallete.primaryColor,
+                        endIndent: 20.w,
+                        indent: 20.w,
+                        thickness: 2.h,
                       ),
                     ),
                   ],
@@ -140,7 +141,7 @@ class LoginView extends StatelessWidget {
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: Color(0xffF6BD00),
-                      width: 3,
+                      width: 3.w,
                       style: BorderStyle.solid,
                     ),
                     borderRadius: BorderRadius.circular(25.r),
@@ -154,7 +155,7 @@ class LoginView extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Color(0xffF6BD00),
+                              color: ColorPallete.primaryColor,
                               width:
                               3.r, //style: context.locale.toString()=="en"?
                               // BorderStyle.solid:BorderStyle.none

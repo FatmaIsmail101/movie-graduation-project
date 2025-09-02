@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/constants/assets.dart';
 import 'package:movies/core/theme/color_pallete.dart';
 import 'package:movies/modules/update_profile/widgets/avatar_menu.dart';
@@ -75,7 +76,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16).r,
           child: Form(
             key: _globalKey,
             child: SingleChildScrollView(
@@ -88,7 +89,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                     child: Bounceable(
                       onTap: _pickeAvatar,
                       child: CircleAvatar(
-                        radius: 60,
+                        radius: 60.r,
                         backgroundImage: selectedAvatar != null
                             ? AssetImage(selectedAvatar!)
                             : null,
@@ -98,7 +99,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 35),
+                  SizedBox(height: 35.h),
                   CustomTextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -115,7 +116,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                     text: "Name",
                     textInputType: TextInputType.text,
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   CustomTextFormField(
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -132,20 +133,20 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                     text: "012254885505",
                     textInputType: TextInputType.phone,
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 30.h),
                   Text(
                     "Reset Password",
                     style: theme.textTheme.headlineSmall!.copyWith(
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 160),
+                  SizedBox(height: 160.h),
                   CustomButton(
                     text: "Delete Account",
                     color: Colors.red,
                     textColor: Colors.white,
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   CustomButton(
                     text: "Update Data",
                     color: ColorPallete.primaryColor,

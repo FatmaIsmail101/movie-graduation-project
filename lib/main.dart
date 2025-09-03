@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/routes/app_routes.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/theme_manager.dart';
-import 'package:movies/modules/authuntication/login_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
           theme: AppThemeManager.appTheme,
           title: 'Movie',
             debugShowCheckedModeBanner: false,
-          home: LoginView(),
+
           initialRoute: PageRouteName.splashView,
           onGenerateRoute: AppRoutes.onGenerateRoute,
         );

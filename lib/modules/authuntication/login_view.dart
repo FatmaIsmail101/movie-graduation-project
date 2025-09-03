@@ -74,7 +74,8 @@ class LoginView extends StatelessWidget {
                   alignment: Alignment.bottomRight,
                   child: Bounceable(
                     onTap: () {
-                      Navigator.pushNamed(context, PageRouteName.registerView);
+                      Navigator.pushNamed(
+                          context, PageRouteName.forgetPasswordView);
                     },
                     child: Text(
                       "Forget Password ?",
@@ -102,12 +103,18 @@ class LoginView extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    Text(
-                      "Create One",
-                      style: TextStyle(
-                        color: Color(0xffF6BD00),
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500,
+                    Bounceable(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, PageRouteName.registerView);
+                      },
+                      child: Text(
+                        "Create One",
+                        style: TextStyle(
+                          color: Color(0xffF6BD00),
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],

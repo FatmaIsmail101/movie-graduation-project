@@ -25,4 +25,6 @@ class AppAssets {
   static const String badBoysImg = "assets/images/badBoysImg.png";
   static const String doctorStrangeImg = "assets/images/doctorStrangeImg.png";
   static const String hollywoodImg = "assets/images/hollywoodImg.png";
+  static const String forgetPasswordImg =
+      'assets/images/Forgot password-bro 1.png';
 }

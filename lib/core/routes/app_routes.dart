@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/modules/authuntication/login_view.dart';
 
+import '../../modules/authuntication/forget_password_screen.dart';
 import '../../modules/authuntication/register_page.dart';
 import '../../modules/onboarding/onboarding_screen.dart';
 import '../../modules/splash/splash_screen.dart';
@@ -25,9 +26,9 @@ abstract class AppRoutes {
           builder: (_) => LoginView(),
           settings: settings,
         );
-      case PageRouteName.uptadeProfileView:
+      case PageRouteName.forgetPasswordView:
         return MaterialPageRoute(
-          builder: (_) => UpdateProfileView(),
+          builder: (_) => ForgetPasswordScreen(),
           settings: settings,
         );
       case PageRouteName.registerView:
@@ -35,6 +36,12 @@ abstract class AppRoutes {
           builder: (_) => RegisterPage(),
           settings: settings,
         );
+      case PageRouteName.uptadeProfileView:
+        return MaterialPageRoute(
+          builder: (_) => UpdateProfileView(),
+          settings: settings,
+        );
+
       default:
         return MaterialPageRoute(builder: (_) => SplashScreen());
     }

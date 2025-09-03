@@ -20,39 +20,15 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
 
 
-  final TextEditingController _emailTextEditingController = TextEditingController();
+  final TextEditingController emailTextEditingController = TextEditingController();
 
-  final TextEditingController _passwordTextEditingController = TextEditingController();
+  final TextEditingController passwordTextEditingController = TextEditingController();
 
   final GlobalKey<FormState>_globalKey = GlobalKey<FormState>();
 
   String emailText = '';
-  bool isLoading = false;
-
-  Future<void> handleLogin() async {
-    setState(() {
-      isLoading = true;
-    });
-    final token = await ApiRequests.login(
-        _emailTextEditingController.text.trim(),
-        _passwordTextEditingController.text.trim());
-    setState(() {
-      isLoading = false;
-    });
-    if (token != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Login Success")));
-      print("Access Token:$token");
-      Navigator.pushNamed(context, PageRouteName.uptadeProfileView);
-    }
-    else {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Login Failed")));
-    }
-  }
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16).r,
@@ -66,7 +42,7 @@ class _LoginViewState extends State<LoginView> {
                   AppAssets.loginPIC, height: 100.h, width: 100.w,),
                 CustomTextFormField(
                   textInputType: TextInputType.emailAddress,
-                  textEditingController: _emailTextEditingController,
+                  textEditingController: emailTextEditingController,
                   prefixIcon: Icon(Icons.email, color: Colors.white),
                   text: "Email",
                   validator: (value) {
@@ -86,7 +62,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 CustomTextFormField(
                   textInputType: TextInputType.visiblePassword,
-                  textEditingController: _passwordTextEditingController,
+                  textEditingController: passwordTextEditingController,
                   prefixIcon: Icon(
                     Icons.enhanced_encryption,
                     color: Colors.white,
@@ -114,10 +90,14 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 CustomButton(
                   text: "Login", color: ColorPallete.primaryColor,
-                  onTap:
-                  handleLogin
+                    onTap: () {
+                      ApiRequests.login();
+                      Navigator.pushNamed(
+                          context, PageRouteName.uptadeProfileView);
+                    }
+                  // handleLogin
 
-                  ,),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/routes/page_route_name.dart';
 
 import '../../core/constants/assets.dart';
 
@@ -194,6 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 GestureDetector(
                   onTap: () {
                     // Go to Login page
+                    Navigator.pushNamed(context, PageRouteName.loginView);
                   },
                   child: Text(
                     "Login",

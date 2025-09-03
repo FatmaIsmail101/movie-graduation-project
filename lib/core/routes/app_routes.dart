@@ -4,6 +4,7 @@ import 'package:movies/modules/authuntication/login_view.dart';
 
 import '../../modules/authuntication/forget_password_screen.dart';
 import '../../modules/authuntication/register_page.dart';
+import '../../modules/onboarding/onboarding_intro_screen.dart';
 import '../../modules/onboarding/onboarding_screen.dart';
 import '../../modules/splash/splash_screen.dart';
 import '../../modules/update_profile/update_profile_view.dart';
@@ -14,6 +15,11 @@ abstract class AppRoutes {
       case PageRouteName.splashView:
         return MaterialPageRoute(
           builder: (_) => SplashScreen(),
+          settings: settings,
+        );
+      case PageRouteName.intro:
+        return MaterialPageRoute(
+          builder: (_) => OnboardingIntroScreen(),
           settings: settings,
         );
       case PageRouteName.onboarding:

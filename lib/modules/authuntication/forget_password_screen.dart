@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/constants/assets.dart';
 import '../../core/theme/color_pallete.dart';
@@ -49,58 +50,62 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
           icon: const Icon(Icons.arrow_back, color: ColorPallete.primaryColor),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
+        title: Text(
           "Forget Password",
           style: TextStyle(
             color: ColorPallete.primaryColor,
-            fontSize: 16,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w400,
           ),
         ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            ScaleTransition(
-              scale: _animation,
-              child: SizedBox(
-                height: 250,
-                child: Image.asset(
-                  AppAssets.forgetPasswordImg,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
-
-            // Custom TextField
-            const CustomTextField(hintText: "Email", prefixIcon: Icons.email),
-
-            const SizedBox(height: 25),
-
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: ColorPallete.primaryColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: const Text(
-                  "Verify Email",
-                  style: TextStyle(
-                    color: Color(0xff282A28),
-                    fontWeight: FontWeight.bold,
+        padding: EdgeInsets.all(20.0.r),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ScaleTransition(
+                scale: _animation,
+                child: SizedBox(
+                  height: 250.h,
+                  child: Image.asset(
+                    AppAssets.forgetPasswordImg,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(height: 30.h),
+
+              // Custom TextField
+              const CustomTextField(hintText: "Email", prefixIcon: Icons.email),
+
+              SizedBox(height: 25.h),
+
+              SizedBox(
+                width: double.infinity,
+                height: 50.h,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorPallete.primaryColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                  ),
+                  child: Text(
+                    "Verify Email",
+                    style: TextStyle(
+                      color: Color(0xff282A28),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

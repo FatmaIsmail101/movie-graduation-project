@@ -5,18 +5,51 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/constants/assets.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/color_pallete.dart';
+import 'package:movies/network/api_request.dart';
 import 'package:movies/widgets/custom_button.dart';
 
 import '../../widgets/custom_text_form_field.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   LoginView({super.key});
 
-  final TextEditingController _emailTextEditingController = TextEditingController();
-  final TextEditingController _passwordTextEditingController = TextEditingController();
-  final GlobalKey<FormState>_globalKey = GlobalKey<FormState>();
-  String emailText = '';
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
 
+class _LoginViewState extends State<LoginView> {
+
+
+  final TextEditingController _emailTextEditingController = TextEditingController();
+
+  final TextEditingController _passwordTextEditingController = TextEditingController();
+
+  final GlobalKey<FormState>_globalKey = GlobalKey<FormState>();
+
+  String emailText = '';
+  bool isLoading = false;
+
+  Future<void> handleLogin() async {
+    setState(() {
+      isLoading = true;
+    });
+    final token = await ApiRequests.login(
+        _emailTextEditingController.text.trim(),
+        _passwordTextEditingController.text.trim());
+    setState(() {
+      isLoading = false;
+    });
+    if (token != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Login Success")));
+      print("Access Token:$token");
+      Navigator.pushNamed(context, PageRouteName.uptadeProfileView);
+    }
+    else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Login Failed")));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -81,12 +114,9 @@ class LoginView extends StatelessWidget {
                 ),
                 CustomButton(
                   text: "Login", color: ColorPallete.primaryColor,
-                  onTap: () {
-                    if (_globalKey.currentState!.validate()) {
-                      Navigator.pushNamed(
-                          context, PageRouteName.uptadeProfileView);
-                    }
-                  }
+                  onTap:
+                  handleLogin
+
                   ,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

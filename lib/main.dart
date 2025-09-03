@@ -4,8 +4,13 @@ import 'package:movies/core/routes/app_routes.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/theme_manager.dart';
 import 'package:movies/modules/authuntication/login_view.dart';
+import 'package:movies/network/api_constants.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(
+      url: ApiConstants.baseUrl, anonKey: ApiConstants.apiKey);
   runApp(const MyApp());
 }
 

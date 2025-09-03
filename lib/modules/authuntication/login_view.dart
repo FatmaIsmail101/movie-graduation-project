@@ -63,11 +63,11 @@ class LoginView extends StatelessWidget {
                       return "Enter Password";
                     }
                     final password = RegExp(
-                        r'^(?=.[A-Z])(?=.[a-z])(?=.*[0-9]).{8,}$');
-                    if (password.hasMatch(value)) {
-                      print("Strong Password");
+                        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                    if (!password.hasMatch(value) && value.length < 3) {
+                      return "Invalid Password";
                     }
-                    return null;
+                    // return null;
                   },
                 ),
                 Align(

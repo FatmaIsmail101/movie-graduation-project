@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/constants/assets.dart';
+import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/color_pallete.dart';
 import 'package:movies/modules/update_profile/widgets/avatar_menu.dart';
 import 'package:movies/widgets/custom_button.dart';
@@ -134,10 +135,16 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                     textInputType: TextInputType.phone,
                   ),
                   SizedBox(height: 30.h),
-                  Text(
-                    "Reset Password",
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      color: Colors.white,
+                  Bounceable(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, PageRouteName.forgetPasswordView);
+                    },
+                    child: Text(
+                      "Reset Password",
+                      style: theme.textTheme.headlineSmall!.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   SizedBox(height: 160.h),

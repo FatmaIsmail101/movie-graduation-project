@@ -38,70 +38,72 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
+    return SingleChildScrollView(
+      child: Scaffold(
         backgroundColor: Colors.black,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.yellowColor),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          "Forget Password",
-          style: TextStyle(
-            color: AppColors.yellowColor,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: AppColors.yellowColor),
+            onPressed: () => Navigator.pop(context),
           ),
+          title: const Text(
+            "Forget Password",
+            style: TextStyle(
+              color: AppColors.yellowColor,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          centerTitle: true,
         ),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            ScaleTransition(
-              scale: _animation,
-              child: SizedBox(
-                height: 250,
-                child: Image.asset(
-                  AppAssets.forgetPasswordImg,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
-
-            // Custom TextField
-            const CustomTextField(
-              hintText: "Email",
-              prefixIcon: Icons.email,
-            ),
-
-            const SizedBox(height: 25),
-
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.yellowColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: const Text(
-                  "Verify Email",
-                  style: TextStyle(
-                    color: AppColors.grayColor,
-                    fontWeight: FontWeight.bold,
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              ScaleTransition(
+                scale: _animation,
+                child: SizedBox(
+                  height: 250,
+                  child: Image.asset(
+                    AppAssets.forgetPasswordImg,
+                    fit: BoxFit.contain,
                   ),
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 30),
+      
+              // Custom TextField
+              const CustomTextField(
+                hintText: "Email",
+                prefixIcon: Icons.email,
+              ),
+      
+              const SizedBox(height: 25),
+      
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.yellowColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    "Verify Email",
+                    style: TextStyle(
+                      color: AppColors.grayColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

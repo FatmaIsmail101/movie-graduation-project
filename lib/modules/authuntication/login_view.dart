@@ -43,7 +43,8 @@ class _LoginViewState extends State<LoginView> {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Login Success")));
       print("Access Token:$token");
-      Navigator.pushNamed(context, PageRouteName.uptadeProfileView);
+
+      Navigator.pushNamed(context, PageRouteName.updateProfileView);
     }
     else {
       ScaffoldMessenger.of(context).showSnackBar(

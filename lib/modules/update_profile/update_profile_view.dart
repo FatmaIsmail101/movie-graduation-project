@@ -7,6 +7,8 @@ import 'package:movies/modules/update_profile/widgets/avatar_menu.dart';
 import 'package:movies/widgets/custom_button.dart';
 import 'package:movies/widgets/custom_text_form_field.dart';
 
+import '../../core/routes/page_route_name.dart';
+
 class UpdateProfileView extends StatefulWidget {
   UpdateProfileView({super.key});
 
@@ -134,11 +136,13 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                     textInputType: TextInputType.phone,
                   ),
                   SizedBox(height: 30.h),
-                  Text(
-                    "Reset Password",
-                    style: theme.textTheme.headlineSmall!.copyWith(
-                      color: Colors.white,
-                    ),
+                  CustomButton(
+                    text: "Reset password ",
+                    color: ColorPallete.primaryColor,
+                    onTap: () {
+                      Navigator.pushReplacementNamed(context, PageRouteName.resetPasswordView);
+
+                    },
                   ),
                   SizedBox(height: 160.h),
                   CustomButton(

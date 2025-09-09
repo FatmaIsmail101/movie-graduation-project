@@ -3,7 +3,7 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/constants/assets.dart';
 import 'package:movies/core/theme/color_pallete.dart';
-import 'package:movies/modules/update_profile/widgets/avatar_menu.dart';
+import 'package:movies/feature/update_profile/widgets/avatar_menu.dart';
 import 'package:movies/widgets/custom_button.dart';
 import 'package:movies/widgets/custom_text_form_field.dart';
 

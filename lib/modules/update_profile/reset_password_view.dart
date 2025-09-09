@@ -8,6 +8,7 @@ import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/color_pallete.dart';
 import 'package:movies/network/api_request.dart';
 import 'package:movies/widgets/custom_button.dart';
+import '../../core/theme/snackBar.dart';
 import '../../widgets/custom_text_form_field.dart';
 
 class ResetPasswordView extends StatefulWidget {
@@ -39,13 +40,12 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
       isLoading = false;
     });
     if (response != null) {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("reset password Success")));
-
+      showCustomSnackBar(context, "Reset Password Success", true);
       Navigator.pushReplacementNamed(context, PageRouteName.updateProfileView);
     }
     else {
-      ScaffoldMessenger.of(context).showSnackBar( const SnackBar(content: Text("Reset Password Failed")));
-    }
+      showCustomSnackBar(context, "Reset Password Failed", false);
+     }
   }
 
   @override

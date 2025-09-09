@@ -45,7 +45,6 @@ class LoginView extends StatelessWidget {
                   }
                 },
 
-                // TODO: implement listener
                 builder: (context, state) {
                   return Form(
                     key: _globalKey,
@@ -168,7 +167,7 @@ class LoginView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        //todo:SVG
+
                         CustomButton(
                           text: "Login With Google",
                           color: ColorPallete.primaryColor,

@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
+import '../../../../update_profile/network/update_profile_api.dart';
 import '../../models/auth_model_response.dart';
 import '../../models/login_request.dart';
 
@@ -22,4 +23,7 @@ abstract class DioModule {
 
   @lazySingleton
   LoginRequestApi loginRequestApi(Dio dio) => LoginRequestApi(dio);
+
+  @lazySingleton
+  UpdateProfileApi updateProfileApi(Dio dio) => UpdateProfileApi(dio);
 }

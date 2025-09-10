@@ -3,7 +3,7 @@ import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/theme/color_pallete.dart';
 
-import '../../../core/constants/assets.dart';
+import '../../../../../core/constants/assets.dart';
 
 class AvatarMenu extends StatelessWidget {
   AvatarMenu({

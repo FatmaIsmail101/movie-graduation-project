@@ -4,6 +4,8 @@ import 'package:movies/core/routes/page_route_name.dart';
 import '../../feature/authuntication/forget_password_screen.dart';
 import '../../feature/authuntication/presentation/screens/login_view.dart';
 import '../../feature/authuntication/register_page.dart';
+import '../../feature/authuntication/rest_password/bottom_nav_bar_view.dart';
+import '../../feature/authuntication/rest_password/reset_password_view.dart';
 import '../../feature/home_screen/modules/home/view/home_screen.dart';
 import '../../feature/update_profile/presintation/screens/update_profile_view.dart';
 import '../../modules/onboarding/onboarding_intro_screen.dart';
@@ -36,6 +38,16 @@ abstract class AppRoutes {
       case PageRouteName.forgetPasswordView:
         return MaterialPageRoute(
           builder: (_) => ForgetPasswordScreen(),
+          settings: settings,
+        );
+      case PageRouteName.restPass:
+        return MaterialPageRoute(
+          builder: (_) => ResetPasswordView(),
+          settings: settings,
+        );
+      case PageRouteName.bottomBar:
+        return MaterialPageRoute(
+          builder: (_) => BottomNavBarView(),
           settings: settings,
         );
       case PageRouteName.registerView:

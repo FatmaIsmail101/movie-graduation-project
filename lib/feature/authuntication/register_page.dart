@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/routes/page_route_name.dart';
 
 import '../../core/constants/assets.dart';
 import '../../widgets/custom_text_form_field.dart';
@@ -38,10 +39,10 @@ class _RegisterPageState extends State<RegisterPage> {
   };
 
   final List<Map<String, String>> avatars = [
-    {'asset': AppAssets.coolMan, 'label': 'Avatar'},
-    {'asset': AppAssets.boyAvatar, 'label': 'Avatar'},
-    {'asset': AppAssets.matureMan, 'label': 'Avatar'},
-    {'asset': AppAssets.women, 'label': 'Avatar'},
+    {'asset': AppAssets.image9, 'label': 'Avatar'},
+    {'asset': AppAssets.image7, 'label': 'Avatar'},
+    {'asset': AppAssets.image2, 'label': 'Avatar'},
+    {'asset': AppAssets.image1, 'label': 'Avatar'},
   ];
 
   @override
@@ -77,6 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text("Registered Email: ${state.email}")),
                 );
+                Navigator.pop(context);
               }
             },
             builder: (context, state) {
@@ -191,7 +193,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 18),
                     CustomTextFormField(
                       textInputType: TextInputType.visiblePassword,
-                      textEditingController: _passwordController,
+                      textEditingController: _confirmPasswordController,
                       prefixIcon: Icon(
                         Icons.enhanced_encryption,
                         color: Colors.white,
@@ -205,7 +207,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         final password = RegExp(
                           r'^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$',
                         );
-                        if (password.hasMatch(value)) {
+                        if (!password.hasMatch(value)) {
                           print("Strong Password");
                         }
                         return null;
@@ -280,7 +282,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            // Go to Login page
+                            Navigator.pushNamed(
+                                context, PageRouteName.loginView);
                           },
                           child: Text(
                             localizedTexts['login']![selectedLang],

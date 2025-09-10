@@ -13,8 +13,9 @@ class AppAssets {
   static const String image9 = "assets/images/imag9.png";
   static const String image10 = "assets/images/imag10.png";
   static const String splash = "assets/images/splash.png";
-
   static const String mailIcn = 'assets/icons/mail_icn.png';
+
+  static const String browseIcn = 'assets/icons/browes_icn.png';
   static const String passwordIcn = 'assets/icons/password_icn.png';
   static const String phoneIcn = 'assets/icons/phone_icn.png';
   static const String eyeOff = 'assets/icons/eye off_.png'; //
@@ -22,10 +23,10 @@ class AppAssets {
   static const String englishIcn = 'assets/icons/english.png';
   static const String arabicIcn = 'assets/icons/arabic.png';
 
-  static const String boyAvatar = 'assets/images/boy_avatar.png';
-  static const String coolMan = 'assets/images/cool_man.png';
-  static const String matureMan = 'assets/images/mature_man.png';
-  static const String women = 'assets/images/women.png';
+  static const String boyAvatar = 'assets/images/img7.png';
+  static const String coolMan = 'assets/images/imag9.png';
+  static const String matureMan = 'assets/images/img2.png';
+  static const String women = 'assets/images/imag1.png';
   static const String movies_posters_Img =
       'assets/images/movies_posters_Img.png';
   static const String herosImg = 'assets/images/herosImg.png';

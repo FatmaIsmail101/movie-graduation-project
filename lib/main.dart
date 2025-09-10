@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           title: 'Movie',
             debugShowCheckedModeBanner: false,
 
-          initialRoute: PageRouteName.splashView,
+          initialRoute: PageRouteName.loginView,
           onGenerateRoute: AppRoutes.onGenerateRoute,
         );
       },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/routes/page_route_name.dart';
 
 import '../../core/constants/assets.dart';
 import '../../core/theme/color_pallete.dart';
@@ -87,7 +88,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                 height: 50.h,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushNamed(context, PageRouteName.restPass);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorPallete.primaryColor,

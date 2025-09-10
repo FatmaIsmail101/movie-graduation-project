@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                   if (state.loginRequestState == RequestState.success) {
                     Navigator.pushNamed(
                       context,
-                      PageRouteName.homePage,
+                      PageRouteName.bottomBar,
                     );
                   }
                 },

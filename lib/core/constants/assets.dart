@@ -11,6 +11,9 @@ class AppAssets {
   static const String image7 = "assets/images/img7.png";
   static const String image8 = "assets/images/img8.png";
   static const String image9 = "assets/images/imag9.png";
+  static const String image10 = "assets/images/imag10.png";
+  static const String splash = "assets/images/splash.png";
+
   static const String mailIcn = 'assets/icons/mail_icn.png';
   static const String passwordIcn = 'assets/icons/password_icn.png';
   static const String phoneIcn = 'assets/icons/phone_icn.png';
@@ -23,4 +26,15 @@ class AppAssets {
   static const String coolMan = 'assets/images/cool_man.png';
   static const String matureMan = 'assets/images/mature_man.png';
   static const String women = 'assets/images/women.png';
+  static const String movies_posters_Img =
+      'assets/images/movies_posters_Img.png';
+  static const String herosImg = 'assets/images/herosImg.png';
+  static const String godFatherImg = 'assets/images/godFatherImg.png';
+  static const String badBoysImg = 'assets/images/badBoysImg.png';
+  static const String doctorStrangeImg = 'assets/images/doctorStrangeImg.png';
+  static const String hollywoodImg = 'assets/images/hollywoodImg.png';
+  static const String forgetPasswordImg =
+      'assets/images/Forgot password-bro 1.png';
+  static const String availableNowImg = "assets/images/Available Now.png";
+  static const String watchNowImg = "assets/images/Watch Now.png";
 }

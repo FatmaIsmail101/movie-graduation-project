@@ -11,7 +11,7 @@ import 'package:movies/widgets/custom_button.dart';
 import 'package:movies/widgets/custom_text_form_field.dart';
 
 class UpdateProfileView extends StatefulWidget {
-  UpdateProfileView({super.key});
+  const UpdateProfileView({super.key});
 
   @override
   State<UpdateProfileView> createState() => _UpdateProfileViewState();

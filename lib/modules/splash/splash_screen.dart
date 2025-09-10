@@ -3,6 +3,8 @@ import 'package:movies/core/constants/assets.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }

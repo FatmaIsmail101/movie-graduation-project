@@ -23,7 +23,7 @@ class UpdateProfileRepoImpl implements UpdateProfileRepo {
     } catch (e, stackTrace) {
       print('UpdateProfileRepoImpl error: $e');
       print(stackTrace);
-      return Left(GeneralFailure(message: "${e.toString()}"));
+      return Left(GeneralFailure(message: e.toString()));
     }
   }
 }

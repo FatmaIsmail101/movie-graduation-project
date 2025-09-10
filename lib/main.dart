@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/routes/app_routes.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/theme_manager.dart';
 
 import 'feature/authuntication/data/data_source/di.dart';
+import 'feature/home_screen/modules/home/bloc/bloc.dart';
+import 'feature/home_screen/modules/home/repository/movies_repository.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   configureDependencies();
-  runApp(const MyApp());
+  runApp(
+    RepositoryProvider(
+      create: (_) => MoviesRepository(),
+      child: BlocProvider(
+        create: (context) => MoviesBloc(context.read<MoviesRepository>()),
+        child: const MyApp(),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -29,7 +40,7 @@ class MyApp extends StatelessWidget {
           title: 'Movie',
             debugShowCheckedModeBanner: false,
 
-          initialRoute: PageRouteName.loginView,
+          initialRoute: PageRouteName.splashView,
           onGenerateRoute: AppRoutes.onGenerateRoute,
         );
       },

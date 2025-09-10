@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                   if (state.loginRequestState == RequestState.success) {
                     Navigator.pushNamed(
                       context,
-                      PageRouteName.uptadeProfileView,
+                      PageRouteName.homePage,
                     );
                   }
                 },
@@ -101,9 +101,15 @@ class LoginView extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.bottomRight,
-                          child: Text(
-                            "Forget Password ?",
-                            style: TextStyle(color: Color(0xffF6BD00)),
+                          child: Bounceable(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, PageRouteName.forgetPasswordView);
+                            },
+                            child: Text(
+                              "Forget Password ?",
+                              style: TextStyle(color: Color(0xffF6BD00)),
+                            ),
                           ),
                         ),
                         CustomButton(
@@ -133,12 +139,18 @@ class LoginView extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                            Text(
-                              "Create One",
-                              style: TextStyle(
-                                color: Color(0xffF6BD00),
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w500,
+                            Bounceable(
+                              onTap: () {
+                                Navigator.pushNamed(
+                                    context, PageRouteName.registerView);
+                              },
+                              child: Text(
+                                "Create One",
+                                style: TextStyle(
+                                  color: Color(0xffF6BD00),
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ],

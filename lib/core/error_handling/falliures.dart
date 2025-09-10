@@ -3,6 +3,7 @@ abstract class LoginFailure {
 
   LoginFailure({this.message = ''});
 
+  @override
   String toString() => message ?? 'Unknown failure';
 }
 

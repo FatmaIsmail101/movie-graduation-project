@@ -4,7 +4,7 @@ import 'package:movies/feature/update_profile/%20%20data/models/update_model_res
 import 'package:movies/feature/update_profile/%20%20data/models/update_profile_request.dart';
 import 'package:movies/feature/update_profile/network/update_profile_api.dart';
 
-import '../../../authuntication/data/data_source/di.dart';
+import '../../../../core/di/di.dart';
 
 @Injectable(as: UpdateRemoteDS)
 class UpdateRemoteDSImpl implements UpdateRemoteDS {

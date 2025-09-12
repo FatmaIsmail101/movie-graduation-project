@@ -4,5 +4,5 @@ import 'package:movies/feature/authuntication/data/models/auth_model_response.da
 import 'package:movies/feature/authuntication/data/models/login_request.dart';
 
 abstract class AuthRepo {
-  Future<Either<LoginFailure, AuthModelResponse>> login(LoginRequest request);
+  Future<Either<MovieFailure, AuthModelResponse>> login(LoginRequest request);
 }

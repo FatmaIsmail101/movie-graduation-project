@@ -4,14 +4,14 @@ import '../../../authuntication/presentation/bloc/login_bloc.dart';
 class DeleteProfileState {
   final RequestState? deleteRequestState;
   final String? message;
-  final LoginFailure? failure;
+  final MovieFailure? failure;
 
   DeleteProfileState({this.deleteRequestState, this.message, this.failure});
 
   DeleteProfileState copyWith({
     RequestState? deleteRequestState,
     String? message,
-    LoginFailure? failure,
+    MovieFailure? failure,
   }) {
     return DeleteProfileState(
       deleteRequestState: deleteRequestState ?? this.deleteRequestState,

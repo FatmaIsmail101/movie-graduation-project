@@ -3,7 +3,7 @@ part of 'update_profile_bloc.dart';
 class UpdateProfileState {
   final RequestState? updateRequestState;
   final UpdateModelResponse? updateModelResponse;
-  final LoginFailure? failure;
+  final MovieFailure? failure;
 
   UpdateProfileState({
     this.updateRequestState,
@@ -14,7 +14,7 @@ class UpdateProfileState {
   UpdateProfileState copyWith({
     RequestState? updateRequestState,
     UpdateModelResponse? updateModelResponse,
-    LoginFailure? failure,
+    MovieFailure? failure,
   }) {
     return UpdateProfileState(
       updateRequestState: updateRequestState ?? this.updateRequestState,

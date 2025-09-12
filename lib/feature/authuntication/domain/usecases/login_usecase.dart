@@ -12,7 +12,7 @@ class LoginUseCase {
 
   LoginUseCase(this.repo);
 
-  Future<Either<LoginFailure, AuthModelResponse>> call(LoginRequest request) {
+  Future<Either<MovieFailure, AuthModelResponse>> call(LoginRequest request) {
     return repo.login(request);
   }
 }

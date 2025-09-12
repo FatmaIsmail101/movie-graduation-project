@@ -1,12 +1,12 @@
-abstract class LoginFailure {
+abstract class MovieFailure {
   String? message;
 
-  LoginFailure({this.message = ''});
+  MovieFailure({this.message = ''});
 
   @override
   String toString() => message ?? 'Unknown failure';
 }
 
-class GeneralFailure extends LoginFailure {
+class GeneralFailure extends MovieFailure {
   GeneralFailure({super.message});
 }

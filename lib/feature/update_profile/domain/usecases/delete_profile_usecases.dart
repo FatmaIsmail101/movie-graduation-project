@@ -10,7 +10,7 @@ class DeleteProfileUseCase {
 
   DeleteProfileUseCase(this.deleteProfileRepo);
 
-  Future<Either<LoginFailure, DeleteProfileModelResponse>>
+  Future<Either<MovieFailure, DeleteProfileModelResponse>>
   callDeleteProfile() async {
     return await deleteProfileRepo.deleteProfile();
   }

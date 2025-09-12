@@ -12,7 +12,7 @@ class UpdateProfileUseCases {
 
   UpdateProfileUseCases(this.updateProfileRepo);
 
-  Future<Either<LoginFailure, UpdateModelResponse>> updateCall(
+  Future<Either<MovieFailure, UpdateModelResponse>> updateCall(
     UpdateProfileRequest request,
   ) {
     return updateProfileRepo.update(request);

@@ -10,8 +10,8 @@ part of 'login_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
-class _LoginRequestApi implements LoginRequestApi {
-  _LoginRequestApi(this._dio, {this.baseUrl, this.errorLogger}) {
+class _MovieClient implements MovieClient {
+  _MovieClient(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://route-movie-apis.vercel.app/';
   }
 
@@ -42,6 +42,39 @@ class _LoginRequestApi implements LoginRequestApi {
     late AuthModelResponse _value;
     try {
       _value = AuthModelResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<MovieDetailsResponse> getMovieDetails(int movieId,
+      bool withImages,
+      bool withCast,) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'movie_id': movieId,
+      r'with_images': withImages,
+      r'with_cast': withCast,
+    };
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<MovieDetailsResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+        _dio.options,
+        'movie_details.json',
+        queryParameters: queryParameters,
+        data: _data,
+      )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MovieDetailsResponse _value;
+    try {
+      _value = MovieDetailsResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

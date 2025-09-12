@@ -13,7 +13,7 @@ class DeleteProfileRepoImpl implements DeleteProfileRepo {
   DeleteProfileRepoImpl(this.deleteRemoteDS);
 
   @override
-  Future<Either<LoginFailure, DeleteProfileModelResponse>>
+  Future<Either<MovieFailure, DeleteProfileModelResponse>>
   deleteProfile() async {
     try {
       var response = await deleteRemoteDS.deleteProfile();

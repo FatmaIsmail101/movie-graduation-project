@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 import '../../../../../core/constants/assets.dart';
+import '../../movie_details/presntation/details/movie_details_page.dart';
 import '../bloc/bloc.dart';
 import '../bloc/movies_event.dart';
 import '../bloc/movies_state.dart';
@@ -94,16 +96,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                   },
                                 ),
                                 items: movies.map((movie) {
-                                  return ClipRRect(
-                                    borderRadius: BorderRadius.circular(16),
-                                    child: Image.network(
-                                      movie.mediumCoverImage ?? "",
-                                      height: 340,
-                                      width: 220,
-                                      fit: BoxFit.cover,
-                                      errorBuilder: (_, __, ___) => const Icon(
-                                        Icons.broken_image,
-                                        color: Colors.white,
+                                  return Bounceable(
+
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(
+                                        builder: (_) =>
+                                            MovieDetailsPage(
+                                                movieId: currentIndex),
+                                      ),);
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(16),
+                                      child: Image.network(
+                                        movie.mediumCoverImage ?? "",
+                                        height: 340,
+                                        width: 220,
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (_, __, ___) =>
+                                        const Icon(
+                                          Icons.broken_image,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   );

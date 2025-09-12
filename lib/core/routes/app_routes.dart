@@ -7,12 +7,14 @@ import '../../feature/authuntication/register_page.dart';
 import '../../feature/authuntication/rest_password/bottom_nav_bar_view.dart';
 import '../../feature/authuntication/rest_password/reset_password_view.dart';
 import '../../feature/home_screen/modules/home/view/home_screen.dart';
+import '../../feature/home_screen/modules/movie_details/presntation/details/movie_details_page.dart';
 import '../../feature/update_profile/presintation/screens/update_profile_view.dart';
 import '../../modules/onboarding/onboarding_intro_screen.dart';
 import '../../modules/onboarding/onboarding_screen.dart';
 import '../../modules/splash/splash_screen.dart';
 
 abstract class AppRoutes {
+
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case PageRouteName.splashView:
@@ -66,6 +68,13 @@ abstract class AppRoutes {
           settings: settings,
         );
 
+      case PageRouteName.movieDetails:
+        final movieId = settings.arguments as int; // هنا بتاخدي الـ id
+
+        return MaterialPageRoute(
+          builder: (_) => MovieDetailsPage(movieId: movieId,),
+          settings: settings,
+        );
       default:
         return MaterialPageRoute(builder: (_) => SplashScreen());
     }

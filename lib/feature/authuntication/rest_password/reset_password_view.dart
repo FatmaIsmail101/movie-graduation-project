@@ -11,7 +11,7 @@ import '../../../widgets/custom_text_form_field.dart';
 import 'api_request.dart';
 
 class ResetPasswordView extends StatefulWidget {
-  ResetPasswordView({super.key});
+  const ResetPasswordView({super.key});
 
   @override
   State<ResetPasswordView> createState() => _ResetPasswordViewState();

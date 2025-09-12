@@ -7,8 +7,8 @@ import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/color_pallete.dart';
 import 'package:movies/widgets/custom_button.dart';
 
+import '../../../../core/di/di.dart';
 import '../../../../widgets/custom_text_form_field.dart';
-import '../../data/data_source/di.dart';
 import '../bloc/login_bloc.dart';
 
 class LoginView extends StatelessWidget {

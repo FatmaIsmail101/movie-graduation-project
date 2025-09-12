@@ -14,7 +14,7 @@ class UpdateProfileRepoImpl implements UpdateProfileRepo {
   UpdateProfileRepoImpl(this.updateRemoteDS);
 
   @override
-  Future<Either<LoginFailure, UpdateModelResponse>> update(
+  Future<Either<MovieFailure, UpdateModelResponse>> update(
     UpdateProfileRequest request,
   ) async {
     try {

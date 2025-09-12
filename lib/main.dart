@@ -5,7 +5,7 @@ import 'package:movies/core/routes/app_routes.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/theme_manager.dart';
 
-import 'feature/authuntication/data/data_source/di.dart';
+import 'core/di/di.dart';
 import 'feature/home_screen/modules/home/bloc/bloc.dart';
 import 'feature/home_screen/modules/home/repository/movies_repository.dart';
 
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           title: 'Movie',
             debugShowCheckedModeBanner: false,
 
-          initialRoute: PageRouteName.loginView,
+          initialRoute: PageRouteName.homePage,
           onGenerateRoute: AppRoutes.onGenerateRoute,
         );
       },

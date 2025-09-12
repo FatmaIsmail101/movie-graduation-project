@@ -3,14 +3,14 @@ part of 'login_bloc.dart';
 class LoginState {
   final RequestState? loginRequestState;
   final AuthModelResponse? authModelResponse;
-  final LoginFailure? failure;
+  final MovieFailure? failure;
 
   LoginState({this.loginRequestState, this.authModelResponse, this.failure});
 
   LoginState copyWith({
     RequestState? loginRequestState,
     AuthModelResponse? authModelResponse,
-    LoginFailure? failure,
+    MovieFailure? failure,
   }) {
     return LoginState(
       loginRequestState: loginRequestState ?? this.loginRequestState,

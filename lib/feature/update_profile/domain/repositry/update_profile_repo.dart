@@ -5,7 +5,7 @@ import 'package:movies/feature/update_profile/%20%20data/models/update_profile_r
 import '../../../../core/error_handling/falliures.dart';
 
 abstract class UpdateProfileRepo {
-  Future<Either<LoginFailure, UpdateModelResponse>> update(
+  Future<Either<MovieFailure, UpdateModelResponse>> update(
     UpdateProfileRequest request,
   );
 }

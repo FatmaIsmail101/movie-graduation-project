@@ -3,7 +3,7 @@ import 'package:movies/feature/update_profile/%20%20data/data_source/delete_prof
 import 'package:movies/feature/update_profile/%20%20data/models/delete_profile_model_response.dart';
 import 'package:movies/feature/update_profile/network/delete_profile_api.dart';
 
-import '../../../authuntication/data/data_source/di.dart';
+import '../../../../core/di/di.dart';
 
 @Injectable(as: DeleteProfileRemoteDS)
 class DeleteProfileRemoteDSImpl implements DeleteProfileRemoteDS {

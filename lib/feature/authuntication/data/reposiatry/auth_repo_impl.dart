@@ -13,7 +13,7 @@ class AuthRepoImpl implements AuthRepo {
   AuthRepoImpl(this.authRemoteDS);
 
   @override
-  Future<Either<LoginFailure, AuthModelResponse>> login(
+  Future<Either<MovieFailure, AuthModelResponse>> login(
     LoginRequest request,
   ) async {
     try {

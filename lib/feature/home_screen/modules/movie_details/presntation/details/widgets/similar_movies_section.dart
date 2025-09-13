@@ -9,12 +9,6 @@ class SimilarMoviesSection extends StatelessWidget {
   SimilarMoviesSection({super.key, this.suggestionModelResponse});
 
   SuggestionModelResponse? suggestionModelResponse;
-  final List<Map<String, String>> movies = [
-    {"image": "assets/images/movie-1.png", "rating": "7.5"},
-    {"image": "assets/images/movie-2.png", "rating": "8.2"},
-    {"image": "assets/images/movie-3.png", "rating": "6.9"},
-    {"image": "assets/images/movie-4.png", "rating": "7.8"},
-  ];
 
   @override
   Widget build(BuildContext context) {

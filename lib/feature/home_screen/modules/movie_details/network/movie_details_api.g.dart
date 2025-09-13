@@ -54,6 +54,79 @@ class _MovieDetailsApi implements MovieDetailsApi {
     return _value;
   }
 
+  @override
+  Future<SuggestionModelResponse> getMovieSuggestions(int movieId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'movie_id': movieId};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<SuggestionModelResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+        _dio.options,
+        'movie_suggestions.json',
+        queryParameters: queryParameters,
+        data: _data,
+      )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SuggestionModelResponse _value;
+    try {
+      _value = SuggestionModelResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<MovieListResponse> getMovieList(int limit,
+      int page,
+      String? quality,
+      int minimumRating,
+      String? queryTerm,
+      String? genre,
+      String sortBy,
+      String orderBy,
+      bool withRtRatings,) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'limit': limit,
+      r'page': page,
+      r'quality': quality,
+      r'minimum_rating': minimumRating,
+      r'query_term': queryTerm,
+      r'genre': genre,
+      r'sort_by': sortBy,
+      r'order_by': orderBy,
+      r'with_rt_ratings': withRtRatings,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<MovieListResponse>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+        _dio.options,
+        'list_movies.json',
+        queryParameters: queryParameters,
+        data: _data,
+      )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late MovieListResponse _value;
+    try {
+      _value = MovieListResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

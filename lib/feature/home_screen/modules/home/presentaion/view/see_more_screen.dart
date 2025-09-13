@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies/feature/home_screen/modules/home/view/widgets/moive_card.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:movies/feature/authuntication/presentation/bloc/login_bloc.dart';
+import 'package:movies/feature/home_screen/modules/home/presentaion/bloc/movie_list_bloc.dart';
+import 'package:movies/feature/home_screen/modules/home/presentaion/view/widgets/moive_card.dart';
 
-import '../bloc/bloc.dart';
-import '../bloc/movies_event.dart';
-import '../bloc/movies_state.dart';
+import '../../../movie_details/presntation/details/movie_details_page.dart';
+
 
 class SeeMoreScreen extends StatefulWidget {
   final String genre;
@@ -22,16 +24,17 @@ class _SeeMoreScreenState extends State<SeeMoreScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<MoviesBloc>().add(
-      LoadMoviesEvent(widget.genre, page: currentPage),
+    context.read<MovieListBloc>().add(
+      GetMovieListEvent(genre: widget.genre, page: currentPage),
     );
 
     _scrollController.addListener(() {
       if (_scrollController.position.pixels >=
           _scrollController.position.maxScrollExtent - 200) {
         currentPage++;
-        context.read<MoviesBloc>().add(
-          LoadMoviesEvent(widget.genre, page: currentPage, isLoadMore: true),
+        context.read<MovieListBloc>().add(
+          GetMovieListEvent(genre: widget.genre,
+            page: currentPage,),
         );
       }
     });
@@ -46,16 +49,17 @@ class _SeeMoreScreenState extends State<SeeMoreScreen> {
         backgroundColor: Colors.black,
         elevation: 0,
       ),
-      body: BlocBuilder<MoviesBloc, MoviesState>(
+      body: BlocBuilder<MovieListBloc, MovieListState>(
         builder: (context, state) {
-          if (state is MoviesLoading && state is! MoviesLoaded) {
+          if (state.movieListRequestState == RequestState.loading &&
+              (state.movieListModelResponse?.data?.movies?.isEmpty ?? true)) {
             return Center(child: CircularProgressIndicator());
-          } else if (state is MoviesLoaded) {
-            final movies = state.movies;
+          } else if (state.movieListRequestState == RequestState.success) {
+            final movies = state.movieListModelResponse?.data?.movies ?? [];
             return GridView.builder(
               controller: _scrollController,
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-              itemCount: movies.length + (state.hasMore ? 1 : 0),
+              itemCount: movies.length + 1,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 mainAxisSpacing: 8,
@@ -64,7 +68,14 @@ class _SeeMoreScreenState extends State<SeeMoreScreen> {
               ),
               itemBuilder: (context, index) {
                 if (index < movies.length) {
-                  return MovieCard(movie: movies[index]);
+                  return Bounceable(onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (_) =>
+                          MovieDetailsPage(
+                              movieId: movies[index].id),
+                    ),);
+                  },
+                      child: MovieCard(movie: movies[index]));
                 } else {
                   return Center(
                     child: Padding(
@@ -75,9 +86,10 @@ class _SeeMoreScreenState extends State<SeeMoreScreen> {
                 }
               },
             );
-          } else if (state is MoviesError) {
+          } else if (state.movieListRequestState == RequestState.error) {
             return Center(
-              child: Text(state.message, style: TextStyle(color: Colors.red)),
+              child: Text(state.failure?.message ?? "No More Movies",
+                  style: TextStyle(color: Colors.red)),
             );
           }
           return SizedBox();

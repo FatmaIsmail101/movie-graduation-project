@@ -6,7 +6,7 @@ import '../../feature/authuntication/presentation/screens/login_view.dart';
 import '../../feature/authuntication/register_page.dart';
 import '../../feature/authuntication/rest_password/bottom_nav_bar_view.dart';
 import '../../feature/authuntication/rest_password/reset_password_view.dart';
-import '../../feature/home_screen/modules/home/view/home_screen.dart';
+import '../../feature/home_screen/modules/home/presentaion/view/home_screen.dart';
 import '../../feature/home_screen/modules/movie_details/presntation/details/movie_details_page.dart';
 import '../../feature/update_profile/presintation/screens/update_profile_view.dart';
 import '../../modules/onboarding/onboarding_intro_screen.dart';

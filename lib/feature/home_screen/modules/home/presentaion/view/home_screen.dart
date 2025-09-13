@@ -2,13 +2,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/di/di.dart';
+import 'package:movies/feature/home_screen/modules/home/presentaion/bloc/movie_list_bloc.dart';
 
-import '../../../../../core/constants/assets.dart';
-import '../../movie_details/presntation/details/movie_details_page.dart';
-import '../bloc/bloc.dart';
-import '../bloc/movies_event.dart';
-import '../bloc/movies_state.dart';
-import '../repository/movies_repository.dart';
+import '../../../../../../core/constants/assets.dart';
+import '../../../../../authuntication/presentation/bloc/login_bloc.dart';
+import '../../../movie_details/presntation/details/movie_details_page.dart';
 import 'widgets/movie_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,28 +30,33 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: [
             BlocProvider(
-              create: (_) =>
-                  MoviesBloc(MoviesRepository())..add(LoadMoviesEvent("all")),
-              child: BlocBuilder<MoviesBloc, MoviesState>(
+              create: (BuildContext context) =>
+              getIt<MovieListBloc>()
+                ..add(GetMovieListEvent()),
+              child: BlocBuilder<MovieListBloc, MovieListState>(
                 builder: (context, state) {
-                  if (state is MoviesLoading || state is MoviesInitial) {
+                  if (state.movieListRequestState == RequestState.loading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else
+                  if (state.movieListRequestState == RequestState.success) {
+                    final movies = state.movieListModelResponse?.data.movies ??
+                        [];
+                    print(state.movieListModelResponse?.toJson());
+                    if (movies.isEmpty) {
+                      return const Center(
+                        child: Text("No movies Found", style: TextStyle(
+                            color: Colors.white
+                        ),),);
+                    }
                     return SizedBox(
-                      height: 500,
-                      child: Center(child: CircularProgressIndicator()),
-                    );
-                  } else if (state is MoviesLoaded && state.movies.isNotEmpty) {
-                    final movies = state.movies.take(5).toList();
-
-                    return SizedBox(
-                      height: 580,
+                      height: 580.h,
                       child: Stack(
                         alignment: Alignment.topCenter,
                         children: [
                           Positioned.fill(
                             child: Image.network(
-                              movies[currentIndex].largeCoverImage ??
-                                  movies[currentIndex].mediumCoverImage ??
-                                  "",
+                              movies[currentIndex].largeCoverImage
+                              ,
                               fit: BoxFit.cover,
                               errorBuilder: (_, __, ___) =>
                                   Container(color: Colors.black),
@@ -84,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              SizedBox(height: 100),
+                              SizedBox(height: 75.h),
                               CarouselSlider(
                                 options: CarouselOptions(
                                   height: 340,
@@ -102,15 +107,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Navigator.push(context, MaterialPageRoute(
                                         builder: (_) =>
                                             MovieDetailsPage(
-                                                movieId: currentIndex),
+                                                movieId: movie.id),
                                       ),);
                                     },
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(16),
                                       child: Image.network(
                                         movie.mediumCoverImage ?? "",
-                                        height: 340,
-                                        width: 220,
+                                        height: 340.h,
+                                        width: 220.w,
                                         fit: BoxFit.cover,
                                         errorBuilder: (_, __, ___) =>
                                         const Icon(
@@ -125,8 +130,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               SizedBox(height: 10),
                               Image.asset(
                                 AppAssets.watchNowImg,
-                                height: 100,
-                                width: 380,
+                                height: 100.h,
+                                width: 380.w,
                                 fit: BoxFit.contain,
                               ),
                             ],
@@ -134,44 +139,56 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     );
-                  } else if (state is MoviesError) {
-                    return SizedBox(
-                      height: 300,
-                      child: Center(
-                        child: Text(
-                          "Error: ${state.message}",
-                          style: TextStyle(color: Colors.red),
-                        ),
-                      ),
-                    );
+                  } else
+                  if (state.movieListRequestState == RequestState.error) {
+                    return Center(child: Text("Error: ${state.failure
+                        ?.message}"));
                   }
-                  return SizedBox(height: 300);
+                  return SizedBox(height: 300.h);
                 },
               ),
             ),
             ...genres.map((genre) {
               return BlocProvider(
-                create: (_) =>
-                    MoviesBloc(MoviesRepository())..add(LoadMoviesEvent(genre)),
-                child: BlocBuilder<MoviesBloc, MoviesState>(
+                create: (BuildContext context) =>
+                getIt<MovieListBloc>()
+                  ..add(GetMovieListEvent(genre: genre)),
+                child: BlocBuilder<MovieListBloc, MovieListState>(
                   builder: (context, state) {
-                    if (state is MoviesLoading || state is MoviesInitial) {
+                    if (state.movieListRequestState == RequestState.loading) {
+                      return SizedBox(height: 200.h,
+                          child: const Center(
+                              child: CircularProgressIndicator()));
+                    }
+                    else
+                    if (state.movieListRequestState == RequestState.success) {
+                      final movies = state.movieListModelResponse?.data
+                          ?.movies ?? [];
+                      print(state.movieListModelResponse?.toJson());
+                      if (movies.isEmpty) {
+                        return SizedBox(height: 200.h,
+                          child: const Center(
+                            child: Text("No movies Found", style: TextStyle(
+                                color: Colors.white
+                            ),),),
+                        );
+                      }
+
+                      return MovieSection(title: genre, movies: movies);
+                    } else
+                    if (state.movieListRequestState == RequestState.error) {
                       return SizedBox(
-                        height: 200,
-                        child: Center(child: CircularProgressIndicator()),
-                      );
-                    } else if (state is MoviesLoaded) {
-                      return MovieSection(title: genre, movies: state.movies);
-                    } else if (state is MoviesError) {
-                      return Center(
-                        child: Text(
-                          state.message,
-                          style: TextStyle(color: Colors.red),
+                        height: 200.h,
+                        child: Center(
+                          child: Text(
+                            state.failure?.message ?? "Error Loading Movies",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       );
                     }
-                    return SizedBox(height: 200);
-                  },
+                    return SizedBox(height: 200.h);
+                  }
                 ),
               );
             }),

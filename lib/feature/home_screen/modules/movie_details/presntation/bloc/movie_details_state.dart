@@ -4,17 +4,24 @@ class MovieDetailsState {
   final RequestState? movieDetailsRequestState;
   final MovieDetailsResponse? movieDetailsModelResponse;
   final MovieFailure? failure;
+  final RequestState? movieSuggestionRequestState;
+  final SuggestionModelResponse? movieSuggestionModelResponse;
 
   const MovieDetailsState({
     this.movieDetailsRequestState,
     this.movieDetailsModelResponse,
     this.failure,
+    this.movieSuggestionModelResponse,
+    this.movieSuggestionRequestState
   });
 
   MovieDetailsState copyWith({
     RequestState? movieDetailsRequestState,
     MovieDetailsResponse? movieDetailsModelResponse,
     MovieFailure? failure,
+    final RequestState? movieSuggestionRequestState,
+    final SuggestionModelResponse? movieSuggestionModelResponse
+
   }) {
     return MovieDetailsState(
       movieDetailsRequestState:
@@ -22,6 +29,10 @@ class MovieDetailsState {
       movieDetailsModelResponse:
           movieDetailsModelResponse ?? this.movieDetailsModelResponse,
       failure: failure ?? this.failure,
+        movieSuggestionModelResponse: movieSuggestionModelResponse ??
+            this.movieSuggestionModelResponse,
+        movieSuggestionRequestState: movieSuggestionRequestState ??
+            this.movieSuggestionRequestState
     );
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movies/core/constants/assets.dart';
-import 'package:movies/feature/home_screen/modules/home/view/home_screen.dart';
 import 'package:movies/feature/update_profile/presintation/screens/update_profile_view.dart';
+
+import '../../home_screen/modules/home/presentaion/view/home_screen.dart';
 
 class BottomNavBarView extends StatefulWidget {
   const BottomNavBarView({super.key});

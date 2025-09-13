@@ -37,62 +37,91 @@ class DataWrapper {
 class Movie {
   final int id;
   final String url;
+
   @JsonKey(name: "imdb_code")
   final String imdbCode;
+
   final String title;
+
   @JsonKey(name: "title_english")
   final String titleEnglish;
+
   @JsonKey(name: "title_long")
   final String titleLong;
+
   final String slug;
+
+  @JsonKey(defaultValue: 0)
   final int year;
+
+  @JsonKey(defaultValue: 0.0)
   final double rating;
+
+  @JsonKey(defaultValue: 0)
   final int runtime;
-  final List<String> genres;
-  @JsonKey(name: "like_count")
+
+  final List<String>? genres;
+
+  @JsonKey(name: "like_count", defaultValue: 0)
   final int likeCount;
-  @JsonKey(name: "description_intro")
+
+  @JsonKey(name: "description_intro", defaultValue: "")
   final String descriptionIntro;
-  @JsonKey(name: "description_full")
+
+  @JsonKey(name: "description_full", defaultValue: "")
   final String descriptionFull;
-  @JsonKey(name: "yt_trailer_code")
+
+  @JsonKey(name: "yt_trailer_code", defaultValue: "")
   final String ytTrailerCode;
+
+  @JsonKey(defaultValue: "en")
   final String language;
-  @JsonKey(name: "mpa_rating")
+
+  @JsonKey(name: "mpa_rating", defaultValue: "")
   final String mpaRating;
-  @JsonKey(name: "background_image")
+
+  @JsonKey(name: "background_image", defaultValue: "")
   final String backgroundImage;
-  @JsonKey(name: "background_image_original")
+
+  @JsonKey(name: "background_image_original", defaultValue: "")
   final String backgroundImageOriginal;
-  @JsonKey(name: "small_cover_image")
+
+  @JsonKey(name: "small_cover_image", defaultValue: "")
   final String smallCoverImage;
-  @JsonKey(name: "medium_cover_image")
+
+  @JsonKey(name: "medium_cover_image", defaultValue: "")
   final String mediumCoverImage;
-  @JsonKey(name: "large_cover_image")
+
+  @JsonKey(name: "large_cover_image", defaultValue: "")
   final String largeCoverImage;
 
-  // ✅ الـ screenshots
+  // ✅ screenshots nullable
   @JsonKey(name: "medium_screenshot_image1")
   final String? mediumScreenshot1;
+
   @JsonKey(name: "medium_screenshot_image2")
   final String? mediumScreenshot2;
+
   @JsonKey(name: "medium_screenshot_image3")
   final String? mediumScreenshot3;
 
   @JsonKey(name: "large_screenshot_image1")
   final String? largeScreenshot1;
+
   @JsonKey(name: "large_screenshot_image2")
   final String? largeScreenshot2;
+
   @JsonKey(name: "large_screenshot_image3")
   final String? largeScreenshot3;
 
-  // ✅ هنا نضيف الـ cast
   final List<Cast>? cast;
 
   final List<Torrent> torrents;
-  @JsonKey(name: "date_uploaded")
+
+  @JsonKey(name: "date_uploaded", defaultValue: "")
   final String dateUploaded;
-  @JsonKey(name: "date_uploaded_unix")
+
+  @JsonKey(name: "date_uploaded_unix", defaultValue: 0)
   final int dateUploadedUnix;
 
   Movie({
@@ -106,7 +135,7 @@ class Movie {
     required this.year,
     required this.rating,
     required this.runtime,
-    required this.genres,
+    this.genres,
     required this.likeCount,
     required this.descriptionIntro,
     required this.descriptionFull,

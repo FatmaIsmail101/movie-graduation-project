@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies/core/di/di.dart';
+import 'package:movies/feature/home_screen/modules/home/presentaion/bloc/movie_list_bloc.dart';
+import 'package:movies/feature/home_screen/modules/movie_details/data/models/movie_details_response.dart';
 
-import '../../bloc/bloc.dart';
-import '../../bloc/movies_event.dart';
-import '../../model/movie_model.dart';
-import '../../repository/movies_repository.dart';
 import '../see_more_screen.dart';
 import 'moive_card.dart';
 
 class MovieSection extends StatelessWidget {
   final String title;
-  final List<MovieModel> movies;
+  final List<Movie> movies;
 
   const MovieSection({super.key, required this.title, required this.movies});
 
@@ -41,8 +40,8 @@ class MovieSection extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (_) => BlocProvider(
                         create: (_) =>
-                            MoviesBloc(MoviesRepository())
-                              ..add(LoadMoviesEvent(title)),
+                            getIt<MovieListBloc>()
+                              ..add(GetMovieListEvent(genre: title, page: 1)),
                         child: SeeMoreScreen(genre: title),
                       ),
                     ),

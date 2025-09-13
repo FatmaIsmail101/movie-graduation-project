@@ -43,7 +43,14 @@ class MovieDetailsPage extends StatelessWidget {
                     InfoSection(movie: movie),
                     StatsSection(movie: movie),
                     ScreenshotsSection(movie: movie),
-                    SimilarMoviesSection(),
+                    if (state.movieSuggestionRequestState ==
+                        RequestState.loading)
+                      const Center(child: CircularProgressIndicator())
+                    else
+                      SimilarMoviesSection(
+                        suggestionModelResponse:
+                            state.movieSuggestionModelResponse,
+                      ),
                     SummarySection(movie: movie),
                     CastSection(movie: movie),
                     GenresSection(movie: movie),

@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/feature/home_screen/modules/movie_details/data/models/suggestion_model_response.dart';
+
+import '../movie_details_page.dart';
 
 class SimilarMoviesSection extends StatelessWidget {
-  SimilarMoviesSection({super.key});
+  SimilarMoviesSection({super.key, this.suggestionModelResponse});
 
+  SuggestionModelResponse? suggestionModelResponse;
   final List<Map<String, String>> movies = [
     {"image": "assets/images/movie-1.png", "rating": "7.5"},
     {"image": "assets/images/movie-2.png", "rating": "8.2"},
@@ -36,18 +42,28 @@ class SimilarMoviesSection extends StatelessWidget {
             mainAxisSpacing: 8,
             childAspectRatio: 0.7,
           ),
-          itemCount: movies.length,
+          itemCount: suggestionModelResponse?.data.movies.length ?? 0,
           itemBuilder: (context, index) {
-            final movie = movies[index];
+            final movie = suggestionModelResponse!.data.movies[index];
             return Stack(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    movie["image"]!,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: double.infinity,
+                Bounceable(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => MovieDetailsPage(movieId: movie.id),
+                      ),
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.r),
+                    child: Image.network(
+                      movie.mediumCoverImage,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: double.infinity,
+                    ),
                   ),
                 ),
                 Positioned(
@@ -64,7 +80,7 @@ class SimilarMoviesSection extends StatelessWidget {
                         Icon(Icons.star, color: Colors.yellow, size: 16),
                         SizedBox(width: 3),
                         Text(
-                          movie["rating"]!,
+                          "${movie.rating}",
                           style: TextStyle(color: Colors.white, fontSize: 14),
                         ),
                       ],

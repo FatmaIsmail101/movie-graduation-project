@@ -25,12 +25,12 @@ class StatsSection extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 26.w, vertical: 10.h),
             decoration: BoxDecoration(
               color: Color(0xFF1E1E1E),
-              borderRadius: BorderRadius.circular(16.r),
+              borderRadius: BorderRadius.circular(16.w),
             ),
             child: Row(
               children: [
                 Icon(s["icon"] as IconData, color: Colors.yellow, size: 15),
-                const SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 Text(
                   s["value"] as String,
                   style: TextStyle(color: Colors.white),

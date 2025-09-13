@@ -24,17 +24,31 @@ class CastItem extends StatelessWidget {
         child: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: imagePath.isNotEmpty
-                  ? Image.network(
-                      imagePath,
-                      width: 60.w,
-                      height: 80.h,
-                      fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) =>
-                          Icon(Icons.person, color: Colors.grey, size: 50),
-                    )
-                  : Icon(Icons.person, color: Colors.grey, size: 50),
+              borderRadius: BorderRadius.circular(8.w),
+              child: SizedBox(
+                width: 60.w,
+                height: 80.h,
+                child: imagePath.isNotEmpty
+                    ? Image.network(
+                        imagePath,
+                        fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(
+                            child: SizedBox(
+                              width: 20.w,
+                              height: 20.w,
+                              child: const CircularProgressIndicator(
+                                strokeWidth: 2,
+                              ),
+                            ),
+                          );
+                        },
+                        errorBuilder: (_, __, ___) =>
+                            Icon(Icons.person, color: Colors.grey, size: 40.sp),
+                      )
+                    : Icon(Icons.person, color: Colors.grey, size: 40.sp),
+              ),
             ),
             SizedBox(width: 12.w),
             Expanded(
@@ -43,6 +57,8 @@ class CastItem extends StatelessWidget {
                 children: [
                   Text(
                     name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14.sp,
@@ -52,6 +68,8 @@ class CastItem extends StatelessWidget {
                   SizedBox(height: 4.h),
                   Text(
                     role,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                   ),
                 ],

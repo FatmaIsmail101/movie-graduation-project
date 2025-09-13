@@ -31,22 +31,22 @@ class ScreenshotsSection extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 600,
+          height: 600.h,
           child: ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             itemCount: screenshots.length,
             itemBuilder: (context, index) {
               return Container(
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+                margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 8.h),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(12.r),
                   child:
                       movie?.mediumScreenshot1 != null &&
                           movie!.mediumScreenshot1!.isNotEmpty
                       ? Image.network(
                           screenshots[index],
                           width: double.infinity,
-                          height: 180,
+                          height: 180.h,
                           fit: BoxFit.cover,
                         )
                       : const Icon(

@@ -21,7 +21,7 @@ class SimilarMoviesSection extends StatelessWidget {
             "Similar",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -32,8 +32,8 @@ class SimilarMoviesSection extends StatelessWidget {
           padding: EdgeInsets.all(8),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
+            crossAxisSpacing: 8.h,
+            mainAxisSpacing: 8.w,
             childAspectRatio: 0.7,
           ),
           itemCount: suggestionModelResponse?.data.movies.length ?? 0,
@@ -55,27 +55,29 @@ class SimilarMoviesSection extends StatelessWidget {
                     child: Image.network(
                       movie.mediumCoverImage,
                       fit: BoxFit.cover,
-                      width: double.infinity,
-                      height: double.infinity,
+                      width: double.infinity.w,
+                      height: double.infinity.h,
                     ),
                   ),
                 ),
                 Positioned(
-                  top: 8,
-                  left: 8,
+                  top: 8.h,
+                  left: 8.w,
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 6.w, vertical: 3.h),
                     decoration: BoxDecoration(
                       color: Colors.black54,
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: Row(
                       children: [
                         Icon(Icons.star, color: Colors.yellow, size: 16),
-                        SizedBox(width: 3),
+                        SizedBox(width: 3.w),
                         Text(
                           "${movie.rating}",
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: TextStyle(color: Colors.white, fontSize: 14
+                              .sp),
                         ),
                       ],
                     ),

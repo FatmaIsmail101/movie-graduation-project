@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/feature/home_screen/modules/movie_details/data/models/movie_details_response.dart';
 
 import 'cast_item.dart';
@@ -6,7 +7,7 @@ import 'cast_item.dart';
 class CastSection extends StatelessWidget {
   CastSection({super.key, this.movie});
 
-  Movie? movie;
+  final Movie? movie;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +16,12 @@ class CastSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8.0.r),
           child: Text(
             "Cast",
             style: TextStyle(
               color: Colors.white,
-              fontSize: 18,
+              fontSize: 18.sp,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -35,8 +36,8 @@ class CastSection extends StatelessWidget {
             ),
           )
         else
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: EdgeInsets.all(8.0.r),
             child: Text(
               "No cast available",
               style: TextStyle(color: Colors.white70),

@@ -23,7 +23,7 @@ class SummarySection extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 5),
+          SizedBox(height: 5.h),
           Text(
             movie?.descriptionIntro ?? '',
             style: TextStyle(color: Colors.white70),

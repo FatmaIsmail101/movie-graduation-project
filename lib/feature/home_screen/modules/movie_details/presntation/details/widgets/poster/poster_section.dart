@@ -54,17 +54,16 @@ class _PosterSectionState extends State<PosterSection> {
 
     return Stack(
       children: [
-        // لو Web أو مفيش فيديو => Poster Image
         if (kIsWeb || _controller == null || !_controller!.value.isInitialized)
           Image.network(
             poster,
-            width: double.infinity,
+            width: double.infinity.w,
             height: 300.h,
             fit: BoxFit.cover,
           )
         else
           SizedBox(
-            width: double.infinity,
+            width: double.infinity.w,
             height: 300.h,
             child: VideoPlayer(_controller!),
           ),
@@ -102,13 +101,13 @@ class _PosterSectionState extends State<PosterSection> {
               child: GestureDetector(
                 onTap: _togglePlay,
                 child: CircleAvatar(
-                  radius: 42.r,
+                  radius: 42.w,
                   backgroundColor: Colors.amber,
                   child: CircleAvatar(
-                    radius: 38.r,
+                    radius: 38.w,
                     backgroundColor: Colors.white,
                     child: CircleAvatar(
-                      radius: 31.r,
+                      radius: 31.w,
                       backgroundColor: Colors.amber,
                       child: Icon(
                         _isPlaying ? Icons.pause : Icons.play_arrow,

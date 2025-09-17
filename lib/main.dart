@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           title: 'Movie',
             debugShowCheckedModeBanner: false,
 
-          initialRoute: PageRouteName.homePage,
+          initialRoute: PageRouteName.loginView,
           onGenerateRoute: AppRoutes.onGenerateRoute,
         );
       },

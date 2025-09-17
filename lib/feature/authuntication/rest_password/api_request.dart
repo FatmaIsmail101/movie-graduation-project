@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/token_handling/token.dart';
 import '../../home_screen/core/network/api_constants.dart';
 import 'end_point1.dart';
 
@@ -37,7 +38,8 @@ abstract class ApiRequests {
     String newPassword,
   ) async {
     final url = Uri.parse(ApiConstants.baseUrl + EndPoints.resetPassword);
-    var token = await getToken();
+
+    var token = await TokenHandler.getToken();
     final response = await http.patch(
       url,
       headers: {
@@ -52,11 +54,9 @@ abstract class ApiRequests {
     );
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      print("password reseted Successfully");
       return data['message'];
     } else {
-      print("failed to reset password :${response.body}");
-      return null;
+       return null;
     }
   }
 

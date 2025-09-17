@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/core/routes/page_route_name.dart';
+import 'package:movies/feature/home_screen/modules/profile_tap/profile_tap.dart';
 
 import '../../feature/authuntication/forget_password_screen.dart';
 import '../../feature/authuntication/presentation/screens/login_view.dart';
@@ -12,6 +13,7 @@ import '../../feature/update_profile/presintation/screens/update_profile_view.da
 import '../../modules/onboarding/onboarding_intro_screen.dart';
 import '../../modules/onboarding/onboarding_screen.dart';
 import '../../modules/splash/splash_screen.dart';
+import '../../feature/search/search_screen.dart';
 
 abstract class AppRoutes {
 
@@ -44,7 +46,8 @@ abstract class AppRoutes {
         );
       case PageRouteName.restPass:
         return MaterialPageRoute(
-          builder: (_) => ResetPasswordView(),
+          builder: (_) =>
+              ResetPasswordView(),
           settings: settings,
         );
       case PageRouteName.bottomBar:
@@ -67,12 +70,24 @@ abstract class AppRoutes {
           builder: (_) => UpdateProfileView(),
           settings: settings,
         );
+      case PageRouteName.search:
+        return MaterialPageRoute(
+          builder: (_) => SearchScreen(),
+          settings: settings,
+        );
 
       case PageRouteName.movieDetails:
         final movieId = settings.arguments as int; // هنا بتاخدي الـ id
 
         return MaterialPageRoute(
           builder: (_) => MovieDetailsPage(movieId: movieId,),
+          settings: settings,
+        );
+      case PageRouteName.profileTap:
+        final movieId = settings.arguments as int; // هنا بتاخدي الـ id
+
+        return MaterialPageRoute(
+          builder: (_) =>ProfileTab(),
           settings: settings,
         );
       default:

@@ -38,4 +38,6 @@ class AppAssets {
       'assets/images/Forgot password-bro 1.png';
   static const String availableNowImg = "assets/images/Available Now.png";
   static const String watchNowImg = "assets/images/Watch Now.png";
+  static const String popCornImg = "assets/images/popcorn.png";
+
 }

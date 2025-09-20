@@ -19,10 +19,11 @@ class CustomTextFormField extends StatefulWidget {
   final String text;
   final Widget? suffixIcon;
   final bool isPassword;
-  final String? Function(String?)? validator;
-  final void Function(String)? onChanged;;
-  final VoidCallback? onTapfinal TextEditingController? textEditingController;
-  final void Function(String)? onFieldSubmitted;
+  final String? Function(String?)? validator;;
+  final void Function(String)? onChanged;
+  final VoidCallback? onTap;
+
+  final TextEditingController? textEditingControllerfinal void Function(String)? onFieldSubmitted;
   final TextInputType textInputType;
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();

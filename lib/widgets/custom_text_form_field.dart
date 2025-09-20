@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField({
+  CustomTextFormField({
     super.key,
     required this.prefixIcon,
     required this.text,
@@ -18,12 +18,13 @@ class CustomTextFormField extends StatefulWidget {
   final Widget prefixIcon;
   final String text;
   final Widget? suffixIcon;
-  final bool isPassword;
-  final String? Function(String?)? validator;;
-  final void Function(String)? onChanged;
+  final bool isPassword;;
+  final String? Function(String?)? validatorfinal void Function(String)? onChanged;
   final VoidCallback? onTap;
 
-  final TextEditingController? textEditingControllerfinal void Function(String)? onFieldSubmitted;
+  final TextEditingController? textEditingController;
+
+  void Function(String)? onFieldSubmitted;
   final TextInputType textInputType;
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();

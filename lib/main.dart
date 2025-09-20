@@ -4,12 +4,14 @@ import 'package:movies/core/routes/app_routes.dart';
 import 'package:movies/core/routes/page_route_name.dart';
 import 'package:movies/core/theme/theme_manager.dart';
 
+import '../../../../core/cache/cashe_helper.dart';
 import 'core/di/di.dart';
 
-void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
+  await CacheHelper.init();
+
   runApp(
     const MyApp(),
   );
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
           title: 'Movie',
             debugShowCheckedModeBanner: false,
 
-          initialRoute: PageRouteName.homePage,
+          initialRoute: PageRouteName.loginView,
           onGenerateRoute: AppRoutes.onGenerateRoute,
         );
       },

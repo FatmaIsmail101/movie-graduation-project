@@ -15,6 +15,7 @@ class UpdateProfileUseCases {
   Future<Either<MovieFailure, UpdateModelResponse>> updateCall(
     UpdateProfileRequest request,
   ) {
+    print("==============Request Use Case======$request");
     return updateProfileRepo.update(request);
   }
 }

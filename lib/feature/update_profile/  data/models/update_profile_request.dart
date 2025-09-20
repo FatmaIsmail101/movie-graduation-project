@@ -7,9 +7,8 @@ class UpdateProfileRequest {
   final String? email;
   final int? avaterId;
   final String? name;
-  final String? phone;
 
-  UpdateProfileRequest({this.email, this.avaterId, this.name, this.phone});
+  UpdateProfileRequest({this.email, this.avaterId, this.name});
 
   factory UpdateProfileRequest.fromJson(Map<String, dynamic> json) =>
       _$UpdateProfileRequestFromJson(json);

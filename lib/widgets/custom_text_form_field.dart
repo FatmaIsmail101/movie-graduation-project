@@ -13,16 +13,15 @@ class CustomTextFormField extends StatefulWidget {
     this.onChanged,
     this.onFieldSubmitted,
     required this.textInputType,
-
-  });
+    this.onTap});
 
   final Widget prefixIcon;
   final String text;
   final Widget? suffixIcon;
   final bool isPassword;
   final String? Function(String?)? validator;
-  final void Function(String)? onChanged;
-  final TextEditingController? textEditingController;
+  final void Function(String)? onChanged;;
+  final VoidCallback? onTapfinal TextEditingController? textEditingController;
   final void Function(String)? onFieldSubmitted;
   final TextInputType textInputType;
   @override
@@ -35,6 +34,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: widget.onTap,
       keyboardType: widget.textInputType,
       style: TextStyle(color: Colors.white),
       onChanged: widget.onChanged,

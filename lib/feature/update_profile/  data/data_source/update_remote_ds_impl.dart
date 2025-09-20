@@ -8,12 +8,15 @@ import '../../../../core/di/di.dart';
 
 @Injectable(as: UpdateRemoteDS)
 class UpdateRemoteDSImpl implements UpdateRemoteDS {
-  final token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4YzA1YzMzMzNjZGFjN2EzZDBkMGJhNCIsImVtYWlsIjoiZmF0bWFJc21haWxAZ21haWwuY29tIiwiaWF0IjoxNzU3NDQ3ODM1fQ.8mmUvgIWH5AxS7JYTU23pv_A5J_wRrKCLH01zUvfAvQ";
 
   //
   @override
-  Future<UpdateModelResponse> updateDS(UpdateProfileRequest request) {
-    return getIt<UpdateProfileApi>().update(request, "Bearer $token");
+  Future<UpdateModelResponse> updateDS(UpdateProfileRequest request,
+      String token) {
+    print("====================Update Profile Request=========");
+    print("Token : Bearer $token");
+    print("Body : ${request.toJson()}");
+
+    return getIt<UpdateProfileApi>().update(request, 'Bearer $token');
   }
 }

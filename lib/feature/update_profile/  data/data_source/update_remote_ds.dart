@@ -2,5 +2,6 @@ import 'package:movies/feature/update_profile/%20%20data/models/update_model_res
 import 'package:movies/feature/update_profile/%20%20data/models/update_profile_request.dart';
 
 abstract class UpdateRemoteDS {
-  Future<UpdateModelResponse> updateDS(UpdateProfileRequest request);
+  Future<UpdateModelResponse> updateDS(UpdateProfileRequest request,
+      String token);
 }

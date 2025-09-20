@@ -18,10 +18,9 @@ class UpdateProfileBloc extends Bloc<UpdateProfileEvent, UpdateProfileState> {
     on<UpdateBtnEvent>((event, emit) async {
       emit(state.copyWith(updateRequestState: RequestState.loading));
       UpdateProfileRequest request = UpdateProfileRequest(
-        email: event.email,
+        email: event.email ?? "",
         avaterId: event.avaterId,
         name: event.name,
-        phone: event.phone,
       );
       var result = await updateProfileUseCases.updateCall(request);
       result.fold(
@@ -30,6 +29,7 @@ class UpdateProfileBloc extends Bloc<UpdateProfileEvent, UpdateProfileState> {
             state.copyWith(updateRequestState: RequestState.error, failure: l),
           );
           print(l);
+          print("============Request Bloc======$request");
         },
         (model) {
           emit(

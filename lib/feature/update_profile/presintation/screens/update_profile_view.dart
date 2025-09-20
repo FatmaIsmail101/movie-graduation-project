@@ -10,6 +10,8 @@ import 'package:movies/feature/update_profile/presintation/screens/widgets/avata
 import 'package:movies/widgets/custom_button.dart';
 import 'package:movies/widgets/custom_text_form_field.dart';
 
+import '../../../../core/cache/cashe_helper.dart';
+
 class UpdateProfileView extends StatefulWidget {
   const UpdateProfileView({super.key});
 
@@ -64,6 +66,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                   setState(() {
                     selectedAvatar = index;
                   });
+                  CacheHelper.saveInt('selectedAvatar', index);
                   Navigator.pop(context);
                 },
               );
@@ -74,6 +77,12 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
     );
   }
 
+  void initState() {
+    super.initState();
+    super.initState();
+    _loadSelectedAvatar();
+    _loadData();
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -114,6 +123,10 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                         ),
                         SizedBox(height: 35.h),
                         CustomTextFormField(
+                          onTap: () async {
+                            await CacheHelper.saveString(
+                                "name", _nameController.text);
+                          },
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Enter Your Name";
@@ -132,20 +145,29 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                         ),
                         SizedBox(height: 20.h),
                         CustomTextFormField(
+                          onTap: () async {
+                            await CacheHelper.saveString(
+                                "email", _emailController.text);
+                          },
+                          textInputType: TextInputType.emailAddress,
+                          textEditingController: _emailController,
+                          prefixIcon: Icon(Icons.email, color: Colors.white),
+                          text: "Email",
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "Enter Your number";
+                              return "Enter Your Email";
                             }
-                            final RegExp name = RegExp(r'^[0-9]{10,15}$');
-                            if (!name.hasMatch(value)) {
-                              return "Invalid number";
+                            final emailRegExp = RegExp(
+                              r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                            );
+                            if (!emailRegExp.hasMatch(value)) {
+                              return "Invalid Email";
                             }
                             return null;
                           },
-                          textEditingController: _phoneController,
-                          prefixIcon: Icon(Icons.phone, color: Colors.white),
-                          text: "012254885505",
-                          textInputType: TextInputType.phone,
+                          onChanged: (value) {
+                            // emailText = value;
+                          },
                         ),
                         SizedBox(height: 30.h),
                         Text(
@@ -188,5 +210,25 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
         ),
       ),
     );
+  }
+
+  void _loadSelectedAvatar() async {
+    final avatarIndex = CacheHelper.getInt('selectedAvatar');
+    if (avatarIndex != null) {
+      setState(() {
+        selectedAvatar = avatarIndex;
+      });
+    }
+  }
+
+  void _loadData() async {
+    final savedName = CacheHelper.getString('name');
+    if (savedName != null) {
+      _nameController.text = savedName;
+    }
+    final savedEmail = CacheHelper.getString('email');
+    if (savedEmail != null) {
+      _emailController.text = savedEmail;
+    }
   }
 }

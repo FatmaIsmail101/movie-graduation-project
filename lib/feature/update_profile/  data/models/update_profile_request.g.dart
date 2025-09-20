@@ -12,7 +12,6 @@ UpdateProfileRequest _$UpdateProfileRequestFromJson(
   email: json['email'] as String?,
   avaterId: (json['avaterId'] as num?)?.toInt(),
   name: json['name'] as String?,
-  phone: json['phone'] as String?,
 );
 
 Map<String, dynamic> _$UpdateProfileRequestToJson(
@@ -21,5 +20,4 @@ Map<String, dynamic> _$UpdateProfileRequestToJson(
   'email': instance.email,
   'avaterId': instance.avaterId,
   'name': instance.name,
-  'phone': instance.phone,
 };

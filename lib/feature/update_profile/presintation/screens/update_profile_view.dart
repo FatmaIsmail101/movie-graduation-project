@@ -77,6 +77,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
     );
   }
 
+  @override
   void initState() {
     super.initState();
     super.initState();

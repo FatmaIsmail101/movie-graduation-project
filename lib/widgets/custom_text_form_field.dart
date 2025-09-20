@@ -17,13 +17,12 @@ class CustomTextFormField extends StatefulWidget {
 
   final Widget prefixIcon;
   final String text;
-  final Widget? suffixIcon;
-  final bool isPassword;;
-  final String? Function(String?)? validatorfinal void Function(String)? onChanged;
-  final VoidCallback? onTap;
+  final Widget? suffixIcon;;
+  final bool isPassword;
+  final String? Function(String?)? validator;
+  final void Function(String)? onChangedfinal VoidCallback? onTap;
 
   final TextEditingController? textEditingController;
-
   void Function(String)? onFieldSubmitted;
   final TextInputType textInputType;
   @override

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movies/feature/home_screen/modules/movie_details/data/models/movie_details_response.dart';
 import 'package:movies/feature/home_screen/modules/movie_details/network/movie_details_api.dart';
+import 'package:movies/feature/update_profile/network/delete_profile_api.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
@@ -38,4 +39,9 @@ abstract class DioModule {
 
   @lazySingleton
   UpdateProfileApi updateProfileApi(Dio dio) => UpdateProfileApi(dio);
+
+
+  @lazySingleton
+  DeleteProfileApi deleteProfileApi(Dio dio) => DeleteProfileApi(dio);
+
 }

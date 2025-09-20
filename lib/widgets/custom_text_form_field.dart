@@ -15,10 +15,10 @@ class CustomTextFormField extends StatefulWidget {
     required this.textInputType,
     this.onTap});
 
-  final Widget prefixIcon;
-  final String text;;
-  final Widget? suffixIconfinal bool isPassword;
-  final String? Function(String?)? validator;
+  final Widget prefixIcon;;
+  final String text;
+  final Widget? suffixIcon;
+  final bool isPasswordfinal String? Function(String?)? validator;
   final void Function(String)? onChanged;
   final VoidCallback? onTap;
 

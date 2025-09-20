@@ -83,6 +83,7 @@ import '../../feature/update_profile/domain/usecases/delete_profile_usecases.dar
     as _i19;
 import '../../feature/update_profile/domain/usecases/update_profile_usecases.dart'
     as _i357;
+import '../../feature/update_profile/network/delete_profile_api.dart' as _i708;
 import '../../feature/update_profile/network/update_profile_api.dart' as _i863;
 import '../../feature/update_profile/presintation/bloc/delete_profile_bloc.dart'
     as _i643;
@@ -116,6 +117,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i863.UpdateProfileApi>(
       () => dioModule.updateProfileApi(gh<_i361.Dio>()),
+    );
+    gh.lazySingleton<_i708.DeleteProfileApi>(
+      () => dioModule.deleteProfileApi(gh<_i361.Dio>()),
     );
     gh.factory<_i411.AuthRemoteDS>(() => _i902.AuthRemoteDSImpl());
     gh.factory<_i365.MovieSuggestionsRemoteDs>(
@@ -166,14 +170,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i357.UpdateProfileUseCases>(
       () => _i357.UpdateProfileUseCases(gh<_i824.UpdateProfileRepo>()),
     );
+    gh.factory<_i814.UpdateProfileBloc>(
+      () => _i814.UpdateProfileBloc(
+        gh<_i357.UpdateProfileUseCases>(),
+        gh<_i19.DeleteProfileUseCase>(),
+      ),
+    );
     gh.factory<_i163.MovieDetailsBloc>(
       () => _i163.MovieDetailsBloc(
         gh<_i262.MovieDetailsUseCase>(),
         gh<_i838.MovieSuggestionsRepo>(),
       ),
-    );
-    gh.factory<_i814.UpdateProfileBloc>(
-      () => _i814.UpdateProfileBloc(gh<_i357.UpdateProfileUseCases>()),
     );
     return this;
   }

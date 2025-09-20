@@ -30,7 +30,7 @@ class DeleteProfileBloc extends Bloc<DeleteProfileEvent, DeleteProfileState> {
           emit(
             state.copyWith(
               deleteRequestState: RequestState.success,
-              message: response.message,
+
             ),
           );
         },

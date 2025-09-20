@@ -102,6 +102,16 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                     if (state.updateRequestState == RequestState.success) {
                       Navigator.pop(context);
                     }
+                    if (state.deleteRequestState == RequestState.loading) {
+                      return print("Deleteing Profile.......");
+                    }
+                    else if (state.deleteRequestState == RequestState.success) {
+                      print("Profile deleted Successfully");
+                      Navigator.pop(context);
+                    }
+                    else if (state.deleteRequestState == RequestState.error) {
+                      print("Profile deleted failed ${state.deletefailure}");
+                    }
                   },
                   builder: (context, state) {
                     return Column(
@@ -179,6 +189,10 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                         ),
                         SizedBox(height: 160.h),
                         CustomButton(
+                          onTap: () {
+                            BlocProvider.of<UpdateProfileBloc>(context).add(
+                                DeleteProfileEvent());
+                          },
                           text: "Delete Account",
                           color: Colors.red,
                           textColor: Colors.white,

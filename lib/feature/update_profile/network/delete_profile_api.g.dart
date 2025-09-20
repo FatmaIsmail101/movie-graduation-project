@@ -22,13 +22,13 @@ class _DeleteProfileApi implements DeleteProfileApi {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<DeleteProfileModelResponse> deleteProfile(String token) async {
+  Future<void> deleteProfile(String token) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<DeleteProfileModelResponse>(
+    final _options = _setStreamType<void>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
         _dio.options,
@@ -38,15 +38,7 @@ class _DeleteProfileApi implements DeleteProfileApi {
       )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late DeleteProfileModelResponse _value;
-    try {
-      _value = DeleteProfileModelResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
+    await _dio.fetch<void>(_options);
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {

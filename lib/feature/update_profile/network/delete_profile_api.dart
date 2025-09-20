@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:movies/feature/update_profile/%20%20data/models/delete_profile_model_response.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
@@ -10,7 +9,7 @@ abstract class DeleteProfileApi {
   factory DeleteProfileApi(Dio dio, {String? baseUrl}) = _DeleteProfileApi;
 
   @DELETE("profile")
-  Future<DeleteProfileModelResponse> deleteProfile(
+  Future<void> deleteProfile(
     @Header('Authorization') String token,
   );
 }

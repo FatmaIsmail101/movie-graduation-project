@@ -10,3 +10,5 @@ class UpdateBtnEvent extends UpdateProfileEvent {
 
   UpdateBtnEvent({this.email, this.name, this.phone, this.avaterId});
 }
+
+class DeleteProfileEvent extends UpdateProfileEvent {}

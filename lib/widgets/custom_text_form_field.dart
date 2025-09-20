@@ -13,12 +13,12 @@ class CustomTextFormField extends StatefulWidget {
     this.onChanged,
     this.onFieldSubmitted,
     required this.textInputType,
-    this.onTap});
+    this.onTap});;
 
-  final Widget prefixIcon;;
-  final String text;
+  final Widget prefixIconfinal String text;
   final Widget? suffixIcon;
-  final bool isPasswordfinal String? Function(String?)? validator;
+  final bool isPassword;
+  final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   final VoidCallback? onTap;
 

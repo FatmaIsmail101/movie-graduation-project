@@ -52,10 +52,10 @@ class _SeeMoreScreenState extends State<SeeMoreScreen> {
       body: BlocBuilder<MovieListBloc, MovieListState>(
         builder: (context, state) {
           if (state.movieListRequestState == RequestState.loading &&
-              (state.movieListModelResponse?.data?.movies?.isEmpty ?? true)) {
+              (state.movieListModelResponse?.data.movies.isEmpty ?? true)) {
             return Center(child: CircularProgressIndicator());
           } else if (state.movieListRequestState == RequestState.success) {
-            final movies = state.movieListModelResponse?.data?.movies ?? [];
+            final movies = state.movieListModelResponse?.data.movies ?? [];
             return GridView.builder(
               controller: _scrollController,
               padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),

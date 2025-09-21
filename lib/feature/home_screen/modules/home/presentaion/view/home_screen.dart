@@ -163,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     else
                     if (state.movieListRequestState == RequestState.success) {
                       final movies = state.movieListModelResponse?.data
-                          ?.movies ?? [];
+                          .movies ?? [];
                       print(state.movieListModelResponse?.toJson());
                       if (movies.isEmpty) {
                         return SizedBox(height: 200.h,

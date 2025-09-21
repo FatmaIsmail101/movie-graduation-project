@@ -32,28 +32,27 @@ class MovieCard extends StatelessWidget {
               errorBuilder: (context, error, stackTrace) =>
                   Container(color: Colors.grey, width: 120, height: 180),
             ),
-            if (movie.rating != null)
-              Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: Colors.black54,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.star, size: 14, color: Colors.amber),
-                      SizedBox(width: 2),
-                      Text(
-                        movie.rating!.toStringAsFixed(1),
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ],
-                  ),
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.star, size: 14, color: Colors.amber),
+                    SizedBox(width: 2),
+                    Text(
+                      movie.rating.toStringAsFixed(1),
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                  ],
                 ),
               ),
+            ),
           ],
         ),
       ),

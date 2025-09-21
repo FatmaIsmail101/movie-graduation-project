@@ -5,7 +5,7 @@ import 'package:movies/feature/home_screen/modules/movie_details/data/models/mov
 import 'cast_item.dart';
 
 class CastSection extends StatelessWidget {
-  CastSection({super.key, this.movie});
+  const CastSection({super.key, this.movie});
 
   final Movie? movie;
 

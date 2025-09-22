@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'browse_tab.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'profile_tab.dart';
+import 'package:profile_tab/views/update_profile_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,13 +9,20 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Movies Browser',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(), // خليها داكنة عشان نفس شكل الصورة
-      home: BrowseTab(),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const ProfileTab(),
+        routes: {
+          '/updateProfileView': (context) => const UpdateProfileView(),
+        },
+      ),
     );
   }
 }

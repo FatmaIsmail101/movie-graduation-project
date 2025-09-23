@@ -21,8 +21,12 @@ class _PosterSectionState extends State<PosterSection> {
   void initState() {
     super.initState();
 
-    if (!kIsWeb && widget.movie != null && widget.movie!.torrents.isNotEmpty) {
-      _controller = VideoPlayerController.network(widget.movie!.torrents[0].url)
+    if (!kIsWeb &&
+        widget.movie != null &&
+        widget.movie!.torrents != null &&
+        widget.movie!.torrents!.isNotEmpty) {
+      _controller =
+      VideoPlayerController.network(widget.movie!.torrents!.first.url)
         ..initialize().then((_) {
           setState(() {}); // إعادة build بعد التحميل
         });
@@ -50,16 +54,24 @@ class _PosterSectionState extends State<PosterSection> {
 
   @override
   Widget build(BuildContext context) {
-    final poster = widget.movie?.largeCoverImage ?? '';
+    final poster = widget.movie?.largeCoverImage;
 
     return Stack(
       children: [
         if (kIsWeb || _controller == null || !_controller!.value.isInitialized)
-          Image.network(
+          (poster != null && poster.isNotEmpty)
+              ? Image.network(
             poster,
             width: double.infinity.w,
             height: 300.h,
             fit: BoxFit.cover,
+          )
+              : Container(
+            width: double.infinity.w,
+            height: 300.h,
+            color: Colors.grey.shade900,
+            child: const Icon(
+                Icons.broken_image, size: 80, color: Colors.white70),
           )
         else
           SizedBox(
@@ -67,7 +79,6 @@ class _PosterSectionState extends State<PosterSection> {
             height: 300.h,
             child: VideoPlayer(_controller!),
           ),
-
         // Gradient overlay
         Container(
           width: double.infinity,

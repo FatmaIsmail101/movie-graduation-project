@@ -36,64 +36,61 @@ class DataWrapper {
 @JsonSerializable()
 class Movie {
   final int id;
-  final String url;
+
+  final String? url;
 
   @JsonKey(name: "imdb_code")
-  final String imdbCode;
+  final String? imdbCode;
 
-  final String title;
+  final String? title;
 
   @JsonKey(name: "title_english")
-  final String titleEnglish;
+  final String? titleEnglish;
 
   @JsonKey(name: "title_long")
-  final String titleLong;
+  final String? titleLong;
 
-  final String slug;
+  final String? slug;
 
-  @JsonKey(defaultValue: 0)
-  final int year;
+  final int? year;
 
-  @JsonKey(defaultValue: 0.0)
-  final double rating;
+  final double? rating;
 
-  @JsonKey(defaultValue: 0)
-  final int runtime;
+  final int? runtime;
 
   final List<String>? genres;
 
-  @JsonKey(name: "like_count", defaultValue: 0)
-  final int likeCount;
+  @JsonKey(name: "like_count")
+  final int? likeCount;
 
-  @JsonKey(name: "description_intro", defaultValue: "")
-  final String descriptionIntro;
+  @JsonKey(name: "description_intro")
+  final String? descriptionIntro;
 
-  @JsonKey(name: "description_full", defaultValue: "")
-  final String descriptionFull;
+  @JsonKey(name: "description_full")
+  final String? descriptionFull;
 
-  @JsonKey(name: "yt_trailer_code", defaultValue: "")
-  final String ytTrailerCode;
+  @JsonKey(name: "yt_trailer_code")
+  final String? ytTrailerCode;
 
-  @JsonKey(defaultValue: "en")
-  final String language;
+  final String? language;
 
-  @JsonKey(name: "mpa_rating", defaultValue: "")
-  final String mpaRating;
+  @JsonKey(name: "mpa_rating")
+  final String? mpaRating;
 
-  @JsonKey(name: "background_image", defaultValue: "")
-  final String backgroundImage;
+  @JsonKey(name: "background_image")
+  final String? backgroundImage;
 
-  @JsonKey(name: "background_image_original", defaultValue: "")
-  final String backgroundImageOriginal;
+  @JsonKey(name: "background_image_original")
+  final String? backgroundImageOriginal;
 
-  @JsonKey(name: "small_cover_image", defaultValue: "")
-  final String smallCoverImage;
+  @JsonKey(name: "small_cover_image")
+  final String? smallCoverImage;
 
-  @JsonKey(name: "medium_cover_image", defaultValue: "")
-  final String mediumCoverImage;
+  @JsonKey(name: "medium_cover_image")
+  final String? mediumCoverImage;
 
-  @JsonKey(name: "large_cover_image", defaultValue: "")
-  final String largeCoverImage;
+  @JsonKey(name: "large_cover_image")
+  final String? largeCoverImage;
 
   // ✅ screenshots nullable
   @JsonKey(name: "medium_screenshot_image1")
@@ -116,37 +113,37 @@ class Movie {
 
   final List<Cast>? cast;
 
-  final List<Torrent> torrents;
+  final List<Torrent>? torrents;
 
-  @JsonKey(name: "date_uploaded", defaultValue: "")
-  final String dateUploaded;
+  @JsonKey(name: "date_uploaded")
+  final String? dateUploaded;
 
-  @JsonKey(name: "date_uploaded_unix", defaultValue: 0)
-  final int dateUploadedUnix;
+  @JsonKey(name: "date_uploaded_unix")
+  final int? dateUploadedUnix;
 
   Movie({
     required this.id,
-    required this.url,
-    required this.imdbCode,
-    required this.title,
-    required this.titleEnglish,
-    required this.titleLong,
-    required this.slug,
-    required this.year,
-    required this.rating,
-    required this.runtime,
+    this.url,
+    this.imdbCode,
+    this.title,
+    this.titleEnglish,
+    this.titleLong,
+    this.slug,
+    this.year,
+    this.rating,
+    this.runtime,
     this.genres,
-    required this.likeCount,
-    required this.descriptionIntro,
-    required this.descriptionFull,
-    required this.ytTrailerCode,
-    required this.language,
-    required this.mpaRating,
-    required this.backgroundImage,
-    required this.backgroundImageOriginal,
-    required this.smallCoverImage,
-    required this.mediumCoverImage,
-    required this.largeCoverImage,
+    this.likeCount,
+    this.descriptionIntro,
+    this.descriptionFull,
+    this.ytTrailerCode,
+    this.language,
+    this.mpaRating,
+    this.backgroundImage,
+    this.backgroundImageOriginal,
+    this.smallCoverImage,
+    this.mediumCoverImage,
+    this.largeCoverImage,
     this.mediumScreenshot1,
     this.mediumScreenshot2,
     this.mediumScreenshot3,
@@ -154,9 +151,9 @@ class Movie {
     this.largeScreenshot2,
     this.largeScreenshot3,
     this.cast,
-    required this.torrents,
-    required this.dateUploaded,
-    required this.dateUploadedUnix,
+    this.torrents,
+    this.dateUploaded,
+    this.dateUploadedUnix,
   });
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);

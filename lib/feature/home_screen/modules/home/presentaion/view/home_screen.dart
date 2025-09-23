@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Positioned.fill(
                             child: Image.network(
-                              movies[currentIndex].largeCoverImage
+                              movies[currentIndex].largeCoverImage ?? ''
                               ,
                               fit: BoxFit.cover,
                               errorBuilder: (_, __, ___) =>

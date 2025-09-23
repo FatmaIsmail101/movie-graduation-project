@@ -4,6 +4,7 @@ import 'package:movies/feature/home_screen/modules/profile_tap/profile_tap.dart'
 import 'package:movies/feature/search/search_screen.dart';
 import 'package:movies/feature/update_profile/presintation/screens/update_profile_view.dart';
 
+import '../../../browse_tab.dart';
 import '../../home_screen/modules/home/presentaion/view/home_screen.dart';
 
 class BottomNavBarView extends StatefulWidget {
@@ -19,15 +20,9 @@ class _BottomNavExampleState extends State<BottomNavBarView> {
   final List<Widget> _screens = const [
     HomeScreen(),
     SearchScreen(),
-    Center(
-      child: Text(
-        "🎬 Browse Screen",
-        style: TextStyle(fontSize: 22),
-      ),
-    ),
-    ProfileTab(),
-    Center(child: Text("🔍 Search Screen", style: TextStyle(fontSize: 22))),
     BrowseTab(),
+    ProfileTab(),
+
     UpdateProfileView(),
   ];
 

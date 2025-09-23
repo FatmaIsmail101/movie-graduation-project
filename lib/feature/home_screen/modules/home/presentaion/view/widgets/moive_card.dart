@@ -46,7 +46,7 @@ class MovieCard extends StatelessWidget {
                     Icon(Icons.star, size: 14, color: Colors.amber),
                     SizedBox(width: 2),
                     Text(
-                      movie.rating.toStringAsFixed(1),
+                      movie.rating?.toStringAsFixed(1) ?? '',
                       style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ],

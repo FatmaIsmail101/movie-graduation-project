@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:profile_tab/core/constants/assets.dart';
+
+import '../core/constants/assets.dart';
 
 class UpdateProfileView extends StatefulWidget {
   final String? name;

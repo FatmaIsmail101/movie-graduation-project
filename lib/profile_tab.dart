@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:profile_tab/core/constants/assets.dart';
-import 'package:profile_tab/widgets/custom_button.dart';
-import 'package:profile_tab/views/update_profile_view.dart'; // مهم جداً
+import 'package:movies/views/update_profile_view.dart';
+import 'package:movies/widgets/custom_button.dart';
+
+import 'core/constants/assets.dart'; // مهم جداً
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({super.key});

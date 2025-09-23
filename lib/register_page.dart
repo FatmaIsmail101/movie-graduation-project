@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'core/app_assets.dart';
 import 'register_bloc.dart';
-import 'package:movies_app/core/app_assets.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

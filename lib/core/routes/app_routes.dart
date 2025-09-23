@@ -62,6 +62,11 @@ abstract class AppRoutes {
           builder: (_) => HomeScreen(),
           settings: settings,
         );
+      case PageRouteName.browse:
+        return MaterialPageRoute(
+          builder: (_) => SplashScreen(),
+          settings: settings,
+        );
       case PageRouteName.uptadeProfileView:
         return MaterialPageRoute(
           builder: (_) => UpdateProfileView(),

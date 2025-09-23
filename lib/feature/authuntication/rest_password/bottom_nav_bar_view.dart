@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/core/constants/assets.dart';
 import 'package:movies/feature/update_profile/presintation/screens/update_profile_view.dart';
 
+import '../../../browse_tab.dart';
 import '../../home_screen/modules/home/presentaion/view/home_screen.dart';
 
 class BottomNavBarView extends StatefulWidget {
@@ -17,7 +18,7 @@ class _BottomNavExampleState extends State<BottomNavBarView> {
   final List<Widget> _screens = const [
     HomeScreen(),
     Center(child: Text("🔍 Search Screen", style: TextStyle(fontSize: 22))),
-    Center(child: Text("🎬 Browse Screen", style: TextStyle(fontSize: 22))),
+    BrowseTab(),
     UpdateProfileView(),
   ];
 

@@ -5,6 +5,8 @@ import 'package:movies/feature/authuntication/data/models/auth_model_response.da
 import 'package:movies/feature/authuntication/data/models/login_request.dart';
 import 'package:movies/feature/authuntication/domain/usecases/login_usecase.dart';
 
+import '../../../../core/token_handling/token.dart';
+
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -29,6 +31,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           print(l);
         },
         (model) {
+          TokenHandler.saveToken(model.data) ;
           emit(
             state.copyWith(
               loginRequestState: RequestState.success,

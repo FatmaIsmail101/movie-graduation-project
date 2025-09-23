@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies/core/constants/assets.dart';
 import 'package:movies/core/di/di.dart';
 import 'package:movies/core/theme/color_pallete.dart';
+import 'package:movies/feature/authuntication/rest_password/reset_password_view.dart';
 import 'package:movies/feature/update_profile/presintation/bloc/update_profile_bloc.dart';
 import 'package:movies/feature/update_profile/presintation/screens/widgets/avatar_menu.dart';
 import 'package:movies/widgets/custom_button.dart';
@@ -181,10 +182,21 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                           },
                         ),
                         SizedBox(height: 30.h),
-                        Text(
-                          "Reset Password",
-                          style: theme.textTheme.headlineSmall!.copyWith(
-                            color: Colors.white,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ResetPasswordView(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            "Reset Password",
+                            style: theme.textTheme.headlineSmall!.copyWith(
+                              color: Colors.white,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ),
                         SizedBox(height: 160.h),

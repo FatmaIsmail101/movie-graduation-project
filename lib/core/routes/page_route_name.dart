@@ -13,4 +13,8 @@ abstract class PageRouteName {
   static const String movieDetails = 'movieDetails';
 
   static const String uptadeProfileView = 'uptadeProfileView';
+  static const String search = 'search';
+  static const String profileTap = 'profileTap';
+
+
 }
